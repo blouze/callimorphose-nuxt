@@ -1,43 +1,42 @@
 <template>
-  <NavBar />
+  <div class="">
+    <section class="hero is-fullheight column is-half is-offset-one-quarter">
+      <div class="hero-body">
+        <div class="container">
+          <div class="content">
+            <object type="image/svg+xml" :data="Animation" style="width: 100%" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section v-if="!$apollo.queries.ecritures.loading" class="section">
+      <div class="columns">
+        <div v-for="{id, name, image} in ecritures" :key="id" class="column is-half">
+          <h3 class="title is-3">
+            {{ name }}
+          </h3>
+          <figure class="image">
+            <img :src="`http://localhost:1337${image.formats['medium'].url}`">
+          </figure>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
 
 <script>
-import { NavBar } from '../components'
+import Animation from '@/assets/CALLIMORPHOSE_draw.svg?data'
+import ecrituresQuery from '~/apollo/queries/ecriture/ecritures'
+
 export default {
-  components: { NavBar }
+  name: 'IndexPage',
+  data: () => ({ Animation }),
+  apollo: {
+    ecritures: {
+      prefetch: true,
+      query: ecrituresQuery
+    }
+  }
 }
 </script>
-
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>

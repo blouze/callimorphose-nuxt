@@ -1,9 +1,9 @@
 <template>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="https://bulma.io">
+      <nuxt-link class="navbar-item" to="/">
         <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-      </a>
+      </nuxt-link>
 
       <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
         <span aria-hidden="true" />
@@ -13,19 +13,11 @@
     </div>
 
     <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item">
-          Home
-        </a>
-
-        <a class="navbar-item">
-          Documentation
-        </a>
-
+      <div class="navbar-end">
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            More
-          </a>
+          <nuxt-link class="navbar-link" to="/ecritures">
+            écritures
+          </nuxt-link>
 
           <div class="navbar-dropdown">
             <a class="navbar-item">
@@ -43,19 +35,10 @@
             </a>
           </div>
         </div>
-      </div>
 
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-primary">
-              <strong>Sign up</strong>
-            </a>
-            <a class="button is-light">
-              Log in
-            </a>
-          </div>
-        </div>
+        <nuxt-link class="navbar-item" to="/realisations">
+          réalisations
+        </nuxt-link>
       </div>
     </div>
   </nav>
@@ -63,7 +46,7 @@
 
 <script>
 export default {
-  name: 'NavBar'
+  name: 'Header'
 }
 </script>
 

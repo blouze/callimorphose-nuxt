@@ -1,0 +1,6 @@
+query Ecritures {
+  ecritures {
+    id, name,
+    image { id, formats }
+  }
+}
