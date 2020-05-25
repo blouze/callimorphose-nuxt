@@ -1,3 +1,25 @@
+import axios from 'axios'
+
+const dynamicRoutes = () => {
+  return axios({
+    url: process.env.BACKEND_URL,
+    method: 'get',
+    data: {
+      query: `
+        query Ecritures {
+          ecritures {
+            id, name,
+            image { id, formats }
+          }
+        }
+      `
+    }
+  }).then((res) => {
+    console.log(res)
+    // return res.data.map(product => `/product/${product.id}`)
+    return []
+  })
+}
 
 export default {
   mode: 'universal',
@@ -23,6 +45,7 @@ export default {
   ** Global CSS
   */
   css: [
+    { src: '~assets/css/main.scss', lang: 'scss' }
   ],
   /*
   ** Plugins to load before mounting the App
@@ -41,7 +64,7 @@ export default {
   */
   modules: [
     // Doc: https://github.com/nuxt-community/modules/tree/master/packages/bulma
-    '@nuxtjs/bulma',
+    // '@nuxtjs/bulma',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt-community/dotenv-module
@@ -93,5 +116,8 @@ export default {
     */
     extend (config, ctx) {
     }
+  },
+  generate: {
+    routes: dynamicRoutes
   }
 }

@@ -1,9 +1,9 @@
 <template>
   <div>
-    <section class="hero is-light">
+    <section class="section hero is-white">
       <div class="hero-body">
         <div class="container">
-          <h1 class="title">
+          <h1 class="title is-2">
             réalisations
           </h1>
           <h2 class="subtitle">
@@ -13,13 +13,15 @@
       </div>
     </section>
     <section class="section">
-      <div v-for="{id, title, images} in realisations" :key="id">
-        <h3 class="title is-3">
-          {{ title }}
-        </h3>
-        <figure v-for="{id: imageId, formats} in images" :key="imageId" class="image is-4by3">
-          <img :src="`http://localhost:1337${formats['medium'].url}`">
-        </figure>
+      <div class="container">
+        <div v-for="{id, title, images} in realisations" :key="id">
+          <h3 class="title is-3">
+            {{ title }}
+          </h3>
+          <figure v-for="{id: imageId, formats} in images" :key="imageId" class="image is-4by3">
+            <img :src="`http://localhost:1337${formats['medium'].url}`">
+          </figure>
+        </div>
       </div>
     </section>
   </div>

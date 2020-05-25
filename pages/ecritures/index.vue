@@ -1,9 +1,9 @@
 <template>
   <div>
-    <section class="hero is-light">
+    <section class="section hero is-white">
       <div class="hero-body">
         <div class="container">
-          <h1 class="title">
+          <h1 class="title is-2">
             écritures
           </h1>
           <h2 class="subtitle">
@@ -13,28 +13,18 @@
       </div>
     </section>
     <section class="section">
-      <div v-for="{id, name, image} in ecritures" :key="id">
-        <h3 class="title is-3">
-          {{ name }}
-        </h3>
-        <figure v-for="{id: imageId, formats} in image" :key="imageId" class="image is-4by3">
-          <img :src="`http://localhost:1337${formats['medium'].url}`">
-        </figure>
+      <div class="container">
+        <EcrituresList />
       </div>
     </section>
   </div>
 </template>
 
 <script>
-import ecrituresQuery from '~/apollo/queries/ecriture/ecritures'
+import { EcrituresList } from '~/components'
 
 export default {
   name: 'EcrituresPage',
-  apollo: {
-    ecritures: {
-      prefetch: true,
-      query: ecrituresQuery
-    }
-  }
+  components: { EcrituresList }
 }
 </script>

@@ -11,15 +11,8 @@
     </section>
 
     <section v-if="!$apollo.queries.ecritures.loading" class="section">
-      <div class="columns">
-        <div v-for="{id, name, image} in ecritures" :key="id" class="column is-half">
-          <h3 class="title is-3">
-            {{ name }}
-          </h3>
-          <figure class="image">
-            <img :src="`http://localhost:1337${image.formats['medium'].url}`">
-          </figure>
-        </div>
+      <div class="container">
+        <EcrituresList />
       </div>
     </section>
   </div>
@@ -28,9 +21,11 @@
 <script>
 import Animation from '@/assets/CALLIMORPHOSE_draw.svg?data'
 import ecrituresQuery from '~/apollo/queries/ecriture/ecritures'
+import { EcrituresList } from '~/components'
 
 export default {
   name: 'IndexPage',
+  components: { EcrituresList },
   data: () => ({ Animation }),
   apollo: {
     ecritures: {
