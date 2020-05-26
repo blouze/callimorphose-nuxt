@@ -1,6 +1,9 @@
 query Ecriture ($id: ID!) {
   ecriture (id: $id) {
-    id, name,
-    image { id, formats }
+    id, name, description,
+    image { id, formats },
+    realisations { id, title,
+      images { formats }
+    }
   }
 }

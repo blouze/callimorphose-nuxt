@@ -1,6 +1,8 @@
 <template>
   <div>
-    <section class="section hero is-white">
+    <section class="section" />
+
+    <section class="section hero is-small">
       <div class="hero-body">
         <div class="container">
           <h1 class="title is-2">
@@ -12,6 +14,7 @@
         </div>
       </div>
     </section>
+
     <section class="section">
       <div class="container">
         <EcrituresList />

@@ -17,7 +17,8 @@
     "@nuxtjs/bulma": "^1.2.1",
     "@nuxtjs/dotenv": "^1.4.0",
     "graphql-tag": "2.10.3",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "vue-gallery": "2.0.1"
   },
   "devDependencies": {
     "@babel/runtime-corejs3": "7.9.6",
@@ -29,6 +30,8 @@
     "eslint": "^6.1.0",
     "eslint-plugin-nuxt": ">=0.4.2",
     "node-sass": "4.14.1",
-    "sass-loader": "8.0.2"
+    "sass-loader": "8.0.2",
+    "stylus": "0.54.7",
+    "stylus-loader": "3.0.2"
   }
 }

@@ -3,8 +3,8 @@
     <div class="container">
       <div class="navbar-brand">
         <component :is="$route.name !== 'index' ? 'nuxt-link' : 'div'" to="/">
-          <figure class="image" :style="{ 'width': dense ? '65%' : '90%' }" :class="{ 'hidden': !dense && $route.name === 'index'}">
-            <img src="~/assets/CALLIMORPHOSE.png" class="navbar-item">
+          <figure class="image" :style="{ 'width': dense ? '70%' : '100%' }" :class="{ 'hidden': !dense && $route.name === 'index'}">
+            <img src="~/assets/CALLIMORPHOSE.svg" class="navbar-item">
           </figure>
         </component>
 
@@ -71,15 +71,12 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-.navbar, .navbar-brand * {
-  transition: 0.4s;
-}
+<style lang="stylus" scoped>
+.navbar, .navbar-brand *
+  transition: 0.3s
 
-.navbar-brand {
-  opacity: 1;
-  .hidden {
-    opacity: 0;
-  }
-}
+.navbar-brand
+  opacity: 1
+  .hidden
+    opacity: 0
 </style>

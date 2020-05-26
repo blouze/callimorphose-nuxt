@@ -3,9 +3,7 @@
     <section class="hero is-fullheight column is-half is-offset-one-quarter">
       <div class="hero-body">
         <div class="container">
-          <div class="content">
-            <object type="image/svg+xml" :data="Animation" style="width: 100%" />
-          </div>
+          <object type="image/svg+xml" :data="Animation" style="width: 100%" />
         </div>
       </div>
     </section>
