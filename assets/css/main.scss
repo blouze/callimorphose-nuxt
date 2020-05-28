@@ -15,31 +15,21 @@ $paper: #FBFBF8;
 
 body {
   background-color: $paper;
-  font-size: 0.9rem;
+  // font-size: 0.9rem;
 }
 
 .title {
   font-family: $family-secondary;
+  font-weight: normal;
 }
 
-ul.leaders {
-  max-width: 40em;
-  padding: 0;
-  overflow-x: hidden;
-  list-style: none}
-ul.leaders li:before {
-  float: left;
-  width: 0;
-  white-space: nowrap;
-  content:
-". . . . . . . . . . . . . . . . . . . . "
-". . . . . . . . . . . . . . . . . . . . "
-". . . . . . . . . . . . . . . . . . . . "
-". . . . . . . . . . . . . . . . . . . . "}
-ul.leaders span:first-child {
-  padding-right: 0.33em;
-  background: white}
-ul.leaders span + span {
-  float: right;
-  padding-left: 0.33em;
-  background: white}
+@media screen and (max-width: 1023px) {
+  .navbar-menu.is-active {
+    padding: 1rem;
+    .navbar-item {
+      font-family: $family-serif;
+      font-size: 3rem;
+      border-bottom: 1px solid $dark;
+    }
+  }
+}

@@ -5,13 +5,13 @@
     <section class="section">
       <div class="container">
         <div class="tile is-ancestor">
-          <div class="tile is-8">
-            <figure class="image">
+          <div class="tile is-8 content">
+            <figure class="image gallery-item" @click="index = imgs.length - 1">
               <img :src="`http://localhost:1337${image}`">
             </figure>
           </div>
-          <div class="tile is-parent is-vertical is-4">
-            <div class="tile is-child notification is-white">
+          <div class="tile is-child is-parent is-vertical is-4">
+            <div class="tile is-child ">
               <h2 class="title is-2 has-text-centered is-block">
                 {{ name }}
               </h2>
@@ -19,15 +19,14 @@
                 {{ description }}
               </p>
             </div>
-            <div class="tile columns is-multiline is-gapless">
+            <div class="tile is-child columns is-multiline">
               <div
                 v-for="({ id, title, images }, imageIndex) in realisations"
                 :key="id"
-                class="gallery-item column is-half"
-                @click="index = imageIndex"
+                class="column is-half"
               >
-                <figure class="image">
-                  <img :src="`http://localhost:1337${images[0].formats.thumbnail.url}`" :alt="title">
+                <figure class="image gallery-item" @click="index = imageIndex">
+                  <img :src="`http://localhost:1337${images[0].formats.medium.url}`" :alt="title">
                 </figure>
               </div>
             </div>
@@ -38,7 +37,7 @@
 
     <client-only>
       <v-gallery
-        :images="images || []"
+        :images="imgs ? imgs.map(img => `http://localhost:1337${img}`) : []"
         :index="index"
         @close="index = null"
       />
@@ -55,7 +54,8 @@ export default {
     ecriture: {
       prefetch: true,
       query: ecritureQuery,
-      variables () { return { id: this.$route.params.id } }
+      variables () { return { slug: this.$route.params.slug } },
+      update ({ ecritures }) { return ecritures[0] }
     }
   },
   data: () => ({ index: null }),
@@ -64,8 +64,17 @@ export default {
     image () { return this.ecriture && this.ecriture.image.formats.large.url },
     description () { return this.ecriture && this.ecriture.description },
     realisations () { return this.ecriture && this.ecriture.realisations },
-    images () {
-      return this.realisations && this.realisations.map(realisation => `http://localhost:1337${realisation.images[0].formats.large.url}`)
+    imgs () {
+      return this.realisations && this.realisations.map(realisation => realisation.images[0].formats.large.url).concat(this.image)
+    }
+  },
+  head () {
+    return {
+      title: this.name && `${this.name.toUpperCase()} | écritures | Callimorphose`,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        // { hid: 'description', name: 'description', content: 'My custom description' }
+      ]
     }
   }
 }

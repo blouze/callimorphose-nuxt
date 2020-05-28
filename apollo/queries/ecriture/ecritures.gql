@@ -1,6 +1,6 @@
 query Ecritures {
   ecritures {
-    id, name,
+    id, name, slug,
     image { id, formats }
   }
 }

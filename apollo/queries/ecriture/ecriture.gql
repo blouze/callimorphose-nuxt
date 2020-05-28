@@ -1,5 +1,5 @@
-query Ecriture ($id: ID!) {
-  ecriture (id: $id) {
+query Ecritures ($slug: String!) {
+  ecritures (where: {slug: $slug}) {
     id, name, description,
     image { id, formats },
     realisations { id, title,

@@ -1,28 +1,36 @@
 <template>
-  <nav class="navbar is-fixed-top is-white" role="navigation" aria-label="main navigation" :class="{ 'is-spaced': !dense }">
+  <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation" :class="{ 'is-spaced': !dense }">
     <div class="container">
-      <div class="navbar-brand">
+      <div ref="brand" class="navbar-brand">
         <component :is="$route.name !== 'index' ? 'nuxt-link' : 'div'" to="/">
-          <figure class="image" :style="{ 'width': dense ? '70%' : '100%' }" :class="{ 'hidden': !dense && $route.name === 'index'}">
+          <figure class="image" :style="{ 'width': dense ? '60%' : '90%' }" :class="{ 'hidden': !dense && $route.name === 'index'}">
             <img src="~/assets/CALLIMORPHOSE.svg" class="navbar-item">
           </figure>
         </component>
 
-        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <a
+          role="button"
+          class="navbar-burger burger"
+          :class="{ 'is-active': isMenuOpen }"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+          @click="isMenuOpen = !isMenuOpen"
+        >
           <span aria-hidden="true" />
           <span aria-hidden="true" />
           <span aria-hidden="true" />
         </a>
       </div>
 
-      <div id="navbarBasicExample" class="navbar-menu">
+      <div id="navbarMenu" class="navbar-menu is-shadowless" :class="{ 'is-active': isMenuOpen }" :style="`height: 100vh`">
         <div class="navbar-end">
           <div class="navbar-item has-dropdown is-hoverable">
             <nuxt-link class="navbar-link" to="/ecritures">
               écritures
             </nuxt-link>
 
-            <div class="navbar-dropdown">
+            <!-- <div class="navbar-dropdown">
               <a class="navbar-item">
                 About
               </a>
@@ -36,7 +44,7 @@
               <a class="navbar-item">
                 Report an issue
               </a>
-            </div>
+            </div> -->
           </div>
 
           <nuxt-link class="navbar-item" to="/realisations">
@@ -52,8 +60,12 @@
 export default {
   name: 'Header',
   data: () => ({
-    dense: false
+    dense: false,
+    isMenuOpen: false
   }),
+  computed: {
+    brandHeight () { console.log(this.$refs); return this.$refs.brand && this.$refs.brand.clientHeight }
+  },
   beforeMount () {
     window.addEventListener('scroll', this.handleScroll)
   },
@@ -79,4 +91,9 @@ export default {
   opacity: 1
   .hidden
     opacity: 0
+
+@media screen and (max-width: 1023px)
+  .navbar-menu.is-active
+    overflow: hidden;
+    height: 100%
 </style>

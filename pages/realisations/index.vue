@@ -2,10 +2,10 @@
   <div>
     <section class="section" />
 
-    <section class="section hero ">
+    <section class="section hero is-small">
       <div class="hero-body">
         <div class="container">
-          <h1 class="title is-2">
+          <h1 class="title is-1">
             réalisations
           </h1>
           <h2 class="subtitle">
@@ -18,17 +18,20 @@
     <section v-for="{id, title, date, images} in realisations" :key="id" class="section">
       <div class="container">
         <h3 class="title is-3">
-          {{ title }}
+          <DotLeader>
+            {{ title }}
+            <template v-slot:end>
+              {{ date }}
+            </template>
+          </DotLeader>
         </h3>
-        <div class="tile is-ancestor">
+        <div class="columns is-multiline">
           <div
             v-for="({id: imageId, formats}, imageIndex) in images"
             :key="imageId"
-            class="gallery-item tile is-child"
-            :class="{ 'is-8': imageIndex % 3 === 0, 'is-4': imageIndex % 3 !== 0 }"
-            @click="setGalleryId(id, imageIndex)"
+            class="column is-6"
           >
-            <figure class="image is-4by3">
+            <figure class="gallery-item image" @click="setGalleryId(id, imageIndex)">
               <img :src="`http://localhost:1337${formats['medium'].url}`">
             </figure>
           </div>
@@ -48,9 +51,11 @@
 
 <script>
 import realisationsQuery from '~/apollo/queries/realisation/realisations'
+import { DotLeader } from '~/components'
 
 export default {
   name: 'RealisationsPage',
+  components: { DotLeader },
   apollo: {
     realisations: {
       prefetch: true,
@@ -68,6 +73,15 @@ export default {
     setGalleryId (id, index) {
       this.galleryId = id
       this.imageIndex = index
+    }
+  },
+  head () {
+    return {
+      title: 'réalisations | Callimorphose',
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        // { hid: 'description', name: 'description', content: 'My custom description' }
+      ]
     }
   }
 }

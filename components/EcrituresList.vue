@@ -1,6 +1,6 @@
 <template>
   <div class="columns is-multiline">
-    <nuxt-link v-for="{id, name, image} in ecritures" :key="id" class="column is-half ecriture" :to="{ name: 'ecritures-id', params: { id } }">
+    <nuxt-link v-for="{id, name, image, slug} in ecritures" :key="id" class="column is-half ecriture" :to="{ name: 'ecritures-slug', params: { slug } }">
       <div class="card">
         <div class="card-image">
           <figure class="image">

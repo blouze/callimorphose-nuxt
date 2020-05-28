@@ -1,25 +1,5 @@
-import axios from 'axios'
-
-const dynamicRoutes = () => {
-  return axios({
-    url: process.env.BACKEND_URL,
-    method: 'get',
-    data: {
-      query: `
-        query Ecritures {
-          ecritures {
-            id, name,
-            image { id, formats }
-          }
-        }
-      `
-    }
-  }).then((res) => {
-    console.log(res)
-    // return res.data.map(product => `/product/${product.id}`)
-    return []
-  })
-}
+import { createApolloFetch } from 'apollo-fetch'
+require('dotenv').config()
 
 export default {
   mode: 'universal',
@@ -120,6 +100,19 @@ export default {
     }
   },
   generate: {
-    routes: dynamicRoutes
+    routes () {
+      const uri = process.env.BACKEND_URL
+      const apolloFetch = createApolloFetch({ uri })
+      const query = `query Ecritures {
+        ecritures {
+          id, slug
+        }
+      }`
+      return apolloFetch({ query }).then(({ data }) => {
+        return data.ecritures.map(ecriture => `ecritures/${ecriture.slug}`)
+      }).catch((error) => {
+        console.log(error)
+      })
+    }
   }
 }
