@@ -31,14 +31,16 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~plugins/vue-gallery.client.js' }
+    { src: '~plugins/vue-gallery.client.js' },
+    { src: '~plugins/v-body-scroll-lock.client.js' }
   ],
   /*
   ** Nuxt.js dev-modules
   */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/fontawesome'
   ],
   /*
   ** Nuxt.js modules
@@ -70,6 +72,12 @@ export default {
   /*
   ** Build configuration
   */
+  fontawesome: {
+    icons: {
+      solid: ['faEnvelope'],
+      brands: ['faInstagram']
+    }
+  },
   build: {
     postcss: {
       preset: {

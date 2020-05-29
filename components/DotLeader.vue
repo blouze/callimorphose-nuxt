@@ -24,7 +24,7 @@ ul.leaders
   overflow-x: hidden
   list-style: none
 
-ul.leaders li:before
+ul.leaders li:after
   float: left
   width: 0
   white-space: nowrap
@@ -36,10 +36,12 @@ ul.leaders li:before
 
 ul.leaders span:first-child
   padding-right: 0.33em
-  background: white
+  background: #FBFBF8
 
 ul.leaders span + span
   float: right
   padding-left: 0.33em
-  background: white
+  position: relative
+  z-index: 1
+  background: #FBFBF8
 </style>

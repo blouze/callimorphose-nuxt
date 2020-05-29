@@ -17,7 +17,7 @@
 
     <section v-for="{id, title, date, images} in realisations" :key="id" class="section">
       <div class="container">
-        <h3 class="title is-3">
+        <h3 class="title">
           <DotLeader>
             {{ title }}
             <template v-slot:end>

@@ -3,14 +3,14 @@
     <div class="container">
       <div ref="brand" class="navbar-brand">
         <component :is="$route.name !== 'index' ? 'nuxt-link' : 'div'" to="/">
-          <figure class="image" :style="{ 'width': dense ? '60%' : '90%' }" :class="{ 'hidden': !dense && $route.name === 'index'}">
+          <figure class="image" :style="{ 'width': dense ? '60%' : '90%' }" :class="{ 'hidden': (!dense && $route.name === 'index') || isScrollEnd}">
             <img src="~/assets/CALLIMORPHOSE.svg" class="navbar-item">
           </figure>
         </component>
 
         <a
           role="button"
-          class="navbar-burger burger"
+          class="navbar-burger burger is-primary"
           :class="{ 'is-active': isMenuOpen }"
           aria-label="menu"
           aria-expanded="false"
@@ -23,7 +23,12 @@
         </a>
       </div>
 
-      <div id="navbarMenu" class="navbar-menu is-shadowless" :class="{ 'is-active': isMenuOpen }" :style="`height: 100vh`">
+      <div
+        id="navbarMenu"
+        v-bsl="isMenuOpen"
+        class="navbar-menu is-shadowless"
+        :class="{ 'is-active': isMenuOpen }"
+      >
         <div class="navbar-end">
           <div class="navbar-item has-dropdown is-hoverable">
             <nuxt-link class="navbar-link" to="/ecritures">
@@ -47,9 +52,11 @@
             </div> -->
           </div>
 
-          <nuxt-link class="navbar-item" to="/realisations">
-            réalisations
-          </nuxt-link>
+          <div class="navbar-item">
+            <nuxt-link to="/realisations">
+              réalisations
+            </nuxt-link>
+          </div>
         </div>
       </div>
     </div>
@@ -61,10 +68,13 @@ export default {
   name: 'Header',
   data: () => ({
     dense: false,
-    isMenuOpen: false
+    isMenuOpen: false,
+    isScrollEnd: false
   }),
-  computed: {
-    brandHeight () { console.log(this.$refs); return this.$refs.brand && this.$refs.brand.clientHeight }
+  watch: {
+    $route () {
+      this.isMenuOpen = false
+    }
   },
   beforeMount () {
     window.addEventListener('scroll', this.handleScroll)
@@ -78,13 +88,14 @@ export default {
   methods: {
     handleScroll () {
       this.dense = window.scrollY > 300
+      this.isScrollEnd = (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 200
     }
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-.navbar, .navbar-brand *
+.navbar, .navbar-brand *, .navbar-menu
   transition: 0.3s
 
 .navbar-brand
@@ -93,7 +104,8 @@ export default {
     opacity: 0
 
 @media screen and (max-width: 1023px)
-  .navbar-menu.is-active
-    overflow: hidden;
-    height: 100%
+  .navbar-menu
+    min-height: 0;
+    &.is-active
+      min-height: calc(100vh - 8rem);
 </style>
