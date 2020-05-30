@@ -21,7 +21,9 @@
           <DotLeader>
             {{ title }}
             <template v-slot:end>
-              {{ date }}
+              <span class="subtitle">
+                {{ formatDate(date) }}
+              </span>
             </template>
           </DotLeader>
         </h3>
@@ -50,6 +52,9 @@
 </template>
 
 <script>
+import { format, parse } from 'date-fns'
+import { fr } from 'date-fns/locale'
+
 import realisationsQuery from '~/apollo/queries/realisation/realisations'
 import { DotLeader } from '~/components'
 
@@ -73,6 +78,9 @@ export default {
     setGalleryId (id, index) {
       this.galleryId = id
       this.imageIndex = index
+    },
+    formatDate (date) {
+      return format(parse(date, 'yyyy-MM-dd', new Date()), 'LLLL yyyy', { locale: fr })
     }
   },
   head () {

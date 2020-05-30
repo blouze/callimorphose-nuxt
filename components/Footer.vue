@@ -7,21 +7,21 @@
             <figure class="image is-3by1">
               <img src="~/assets/CALLIMORPHOSE.svg" class="navbar-item">
             </figure>
-            <div class="title is-6">
-              Atelier de calligraphie, Paris.
-            </div>
+            <h6 class="title is-6">
+              Atelier de calligraphie
+            </h6>
           </div>
-          <div class="tile">
+          <div class="tile is-child">
             <div class="buttons">
-              <button class="button is-small is-outlined is-primary" @click="openLink(instagramURL)">
+              <button class="button is-small is-primary is-light" @click="openLink(instagramURL)">
                 <span class="icon">
                   <font-awesome-icon :icon="['fab', 'instagram']" />
                 </span>
                 <span>instagram</span>
               </button>
-              <button class="button is-small is-outlined is-primary" @click="openLink(`mailto: ${email}`)">
+              <button class="button is-small is-primary is-light" @click="openLink(`mailto: ${email}`)">
                 <span class="icon">
-                  <font-awesome-icon icon="envelope" />
+                  <font-awesome-icon :icon="['fas', 'envelope']" />
                 </span>
                 <span>{{ email }}</span>
               </button>
