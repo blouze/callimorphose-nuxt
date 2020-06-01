@@ -110,7 +110,7 @@ export default {
   },
   generate: {
     routes () {
-      const uri = process.env.BACKEND_URL
+      const uri = `${process.env.BACKEND_URL || 'http://localhost:1337'}/graphql`
       const apolloFetch = createApolloFetch({ uri })
       const query = `query Ecritures {
         ecritures {

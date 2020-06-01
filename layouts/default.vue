@@ -19,6 +19,9 @@ export default {
   },
   head () {
     return {
+      link: [
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Cinzel&family=Nunito&display=swap' }
+      ],
       bodyAttrs: {
         class: 'has-navbar-fixed-top'
       },

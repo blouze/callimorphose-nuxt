@@ -34,7 +34,7 @@
             class="column is-6"
           >
             <figure class="gallery-item image" @click="setGalleryId(id, imageIndex)">
-              <img :src="`http://localhost:1337${formats['medium'].url}`">
+              <img :src="getImagePath(formats['medium'].url)">
             </figure>
           </div>
         </div>
@@ -52,9 +52,6 @@
 </template>
 
 <script>
-import { format, parse } from 'date-fns'
-import { fr } from 'date-fns/locale'
-
 import realisationsQuery from '~/apollo/queries/realisation/realisations'
 import { DotLeader } from '~/components'
 
@@ -71,16 +68,13 @@ export default {
   computed: {
     galleryImages () {
       const realisation = this.realisations && this.realisations.find(r => r.id === this.galleryId)
-      return realisation && realisation.images.map(image => `http://localhost:1337${image.formats.large.url}`)
+      return realisation && realisation.images.map(image => this.getImagePath(image.formats.large.url))
     }
   },
   methods: {
     setGalleryId (id, index) {
       this.galleryId = id
       this.imageIndex = index
-    },
-    formatDate (date) {
-      return format(parse(date, 'yyyy-MM-dd', new Date()), 'LLLL yyyy', { locale: fr })
     }
   },
   head () {
