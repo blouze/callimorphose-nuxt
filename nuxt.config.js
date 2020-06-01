@@ -31,6 +31,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~plugins/helpers' },
     { src: '~plugins/vue-gallery.client.js' },
     { src: '~plugins/v-body-scroll-lock.client.js' }
   ],
@@ -58,7 +59,7 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: process.env.BACKEND_URL || 'http://localhost:1337/graphql'
+        httpEndpoint: `${process.env.BACKEND_URL || 'http://localhost:1337'}/graphql`
       }
     },
     includeNodeModules: true

@@ -3,8 +3,8 @@
     <nuxt-link v-for="{id, name, image, slug} in ecritures" :key="id" class="column is-half ecriture" :to="{ name: 'ecritures-slug', params: { slug } }">
       <div class="card">
         <div class="card-image">
-          <figure class="image">
-            <img :src="`http://localhost:1337${image.formats['medium'].url}`">
+          <figure v-if="image" class="image">
+            <img :src="getImagePath(image.formats['medium'].url)">
           </figure>
         </div>
         <div class="card-content">

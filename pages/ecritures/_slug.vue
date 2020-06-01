@@ -6,8 +6,8 @@
       <div class="container">
         <div class="tile is-ancestor">
           <div class="tile is-8 content">
-            <figure class="image gallery-item" @click="index = imgs.length - 1">
-              <img :src="`http://localhost:1337${image}`">
+            <figure v-if="image" class="image gallery-item" @click="index = imgs.length - 1">
+              <img :src="getImagePath(image)">
             </figure>
           </div>
           <div class="tile is-child is-parent is-vertical is-4">
@@ -25,8 +25,8 @@
                 :key="id"
                 class="column is-half"
               >
-                <figure class="image gallery-item" @click="index = imageIndex">
-                  <img :src="`http://localhost:1337${images[0].formats.medium.url}`" :alt="title">
+                <figure v-if="images" class="image gallery-item" @click="index = imageIndex">
+                  <img :src="getImagePath(images[0].formats.medium.url)" :alt="title">
                 </figure>
               </div>
             </div>
@@ -37,7 +37,7 @@
 
     <client-only>
       <v-gallery
-        :images="imgs ? imgs.map(img => `http://localhost:1337${img}`) : []"
+        :images="imgs ? imgs.map(img => getImagePath(img)) : []"
         :index="index"
         @close="index = null"
       />
@@ -61,7 +61,7 @@ export default {
   data: () => ({ index: null }),
   computed: {
     name () { return this.ecriture && this.ecriture.name },
-    image () { return this.ecriture && this.ecriture.image.formats.large.url },
+    image () { return this.ecriture && this.ecriture.image && this.ecriture.image.formats.large.url },
     description () { return this.ecriture && this.ecriture.description },
     realisations () { return this.ecriture && this.ecriture.realisations },
     imgs () {
