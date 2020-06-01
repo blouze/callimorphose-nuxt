@@ -41,7 +41,10 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
-    '@nuxtjs/fontawesome'
+    '@nuxtjs/fontawesome',
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-51815367-6'
+    }]
   ],
   /*
   ** Nuxt.js modules
