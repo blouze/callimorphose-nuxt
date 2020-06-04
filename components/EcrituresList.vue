@@ -1,5 +1,5 @@
 <template>
-  <div class="columns is-multiline">
+  <div class="columns is-multiline" style="justify-content: flex-end;">
     <nuxt-link v-for="{id, name, image, slug} in ecritures" :key="id" class="column is-half ecriture" :to="{ name: 'ecritures-slug', params: { slug } }">
       <div class="card">
         <div class="card-image">

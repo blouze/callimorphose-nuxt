@@ -1,6 +1,6 @@
-query Ecritures ($slug: String!) {
-  ecritures (where: {slug: $slug}) {
-    id, name, description,
+query Ecritures ($where: JSON!) {
+  ecritures (where: $where) {
+    id, name, description, priority, slug,
     image { id, formats },
     realisations { id, title,
       images { formats }

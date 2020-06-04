@@ -35,7 +35,7 @@
       >
         <div class="navbar-end">
           <div class="navbar-item has-dropdown is-hoverable">
-            <nuxt-link class="navbar-link" to="/ecritures">
+            <nuxt-link class="navbar-item" to="/ecritures">
               écritures
             </nuxt-link>
 

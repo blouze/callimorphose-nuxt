@@ -19,6 +19,7 @@
                 {{ description }}
               </p>
             </div>
+
             <div class="tile columns is-multiline">
               <div
                 v-for="({ id, title, images }, imageIndex) in realisations"
@@ -28,6 +29,19 @@
                 <figure v-if="images" class="image gallery-item" @click="index = imageIndex">
                   <img :src="getImagePath(images[0].formats.medium.url)" :alt="title">
                 </figure>
+              </div>
+            </div>
+            <div class="level">
+              <div class="level-item">
+                <nuxt-link v-if="prevEcriture" class="title is-5" :to="{ name: 'ecritures-slug', params: { slug: prevEcriture.slug } }">
+                  &#x2190;&nbsp;{{ prevEcriture.name }}
+                </nuxt-link>
+              </div>
+              <div class="level-item">
+                <nuxt-link v-if="nextEcriture" class="title is-5" :to="{ name: 'ecritures-slug', params: { slug: nextEcriture.slug } }">
+                  {{ nextEcriture.name }}&nbsp;&#x2192;
+                  <div />
+                </nuxt-link>
               </div>
             </div>
           </div>
@@ -47,6 +61,7 @@
 
 <script>
 import ecritureQuery from '~/apollo/queries/ecriture/ecriture'
+import ecrituresCountQuery from '~/apollo/queries/ecriture/ecrituresCount'
 
 export default {
   name: 'EcritureDetailsPage',
@@ -54,13 +69,28 @@ export default {
     ecriture: {
       prefetch: true,
       query: ecritureQuery,
-      variables () { return { slug: this.$route.params.slug } },
+      variables () { return { where: { slug: this.$route.params.slug } } },
+      update ({ ecritures }) { return ecritures && ecritures[0] }
+    },
+    ecrituresCount: {
+      prefetch: true,
+      query: ecrituresCountQuery
+    },
+    nextEcriture: {
+      query: ecritureQuery,
+      variables () { return { where: { priority: (this.priority + this.ecrituresCount + 1) % this.ecrituresCount } } },
+      update ({ ecritures }) { return ecritures && ecritures[0] }
+    },
+    prevEcriture: {
+      query: ecritureQuery,
+      variables () { return { where: { priority: (this.priority + this.ecrituresCount - 1) % this.ecrituresCount } } },
       update ({ ecritures }) { return ecritures && ecritures[0] }
     }
   },
   data: () => ({ index: null }),
   computed: {
     name () { return this.ecriture && this.ecriture.name },
+    priority () { return this.ecriture && this.ecriture.priority },
     image () { return this.ecriture && this.ecriture.image && this.ecriture.image.formats.large.url },
     description () { return this.ecriture && this.ecriture.description },
     realisations () { return this.ecriture && this.ecriture.realisations },
