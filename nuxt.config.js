@@ -34,6 +34,7 @@ export default {
     { src: '~plugins/helpers' },
     { src: '~plugins/vuelidate' },
     { src: '~plugins/vue-gallery.client.js' },
+    { src: '~plugins/vue-cookie-law.client.js' },
     { src: '~plugins/v-body-scroll-lock.client.js' }
   ],
   /*

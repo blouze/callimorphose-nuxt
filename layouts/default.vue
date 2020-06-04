@@ -5,6 +5,9 @@
       <nuxt />
     </div>
     <Footer />
+    <client-only>
+      <cookie-law v-bind="cookieLawOptions" />
+    </client-only>
   </div>
 </template>
 
@@ -14,6 +17,13 @@ import { Header, Footer } from '../components'
 export default {
   name: 'DefaultLayout',
   components: { Header, Footer },
+  data: () => ({
+    cookieLawOptions: {
+      theme: 'blood-orange',
+      message: 'Ce site utilise des cookies pour vous assurer une meilleure expérience.',
+      buttonText: 'Compris'
+    }
+  }),
   computed: {
     title () {
       return this.$route.name
