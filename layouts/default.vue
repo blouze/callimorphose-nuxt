@@ -1,7 +1,9 @@
 <template>
   <div>
     <Header />
-    <nuxt :style="{ 'min-height': '90vh' }" />
+    <div :style="{ 'min-height': '90vh' }">
+      <nuxt />
+    </div>
     <Footer />
   </div>
 </template>

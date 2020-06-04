@@ -113,6 +113,9 @@ export default {
       config.resolve.alias.vue = 'vue/dist/vue.common'
     }
   },
+  transition: {
+    name: 'view'
+  },
   generate: {
     routes () {
       const uri = `${process.env.BACKEND_URL || 'http://localhost:1337'}/graphql`

@@ -37,3 +37,21 @@ a {
     }
   }
 }
+
+$animLen: 0.3s;
+
+.view-enter-active, .view-leave-active {
+  transition: opacity $animLen ease-in-out, transform $animLen ease;
+}
+
+.view-enter-active {
+  transition-delay: $animLen;
+}
+
+.view-enter, .view-leave-to {
+  opacity: 0;
+}
+
+.view-enter-to, .view-leave {
+  opacity: 1;
+}
