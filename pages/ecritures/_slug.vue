@@ -5,21 +5,21 @@
     <section class="section">
       <div class="container">
         <div class="tile is-ancestor">
-          <div class="tile is-8 content">
+          <div class="tile is-8 is-parent">
             <figure v-if="image" class="image gallery-item" @click="index = imgs.length - 1">
               <img :src="getImagePath(image)">
             </figure>
           </div>
-          <div class="tile is-child is-parent is-vertical is-4">
-            <div class="tile is-child ">
-              <h2 class="title is-2 has-text-centered is-block">
+          <div class="tile is-vertical is-4 is-parent">
+            <div class="tile is-child">
+              <h2 class="title is-2 has-text-centered">
                 {{ name }}
               </h2>
               <p class="has-text-justified">
                 {{ description }}
               </p>
             </div>
-            <div class="tile is-child columns is-multiline">
+            <div class="tile columns is-multiline">
               <div
                 v-for="({ id, title, images }, imageIndex) in realisations"
                 :key="id"
@@ -49,13 +49,13 @@
 import ecritureQuery from '~/apollo/queries/ecriture/ecriture'
 
 export default {
-  name: 'EcritureDetails',
+  name: 'EcritureDetailsPage',
   apollo: {
     ecriture: {
       prefetch: true,
       query: ecritureQuery,
       variables () { return { slug: this.$route.params.slug } },
-      update ({ ecritures }) { return ecritures[0] }
+      update ({ ecritures }) { return ecritures && ecritures[0] }
     }
   },
   data: () => ({ index: null }),

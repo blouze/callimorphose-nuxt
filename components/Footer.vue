@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer">
+  <footer class="footer has-background-white-ter">
     <div class="container">
       <div class="content">
         <div class="tile is-ancestor">
@@ -17,7 +17,7 @@
                 <span class="icon">
                   <font-awesome-icon :icon="['fab', 'instagram']" />
                 </span>
-                <span>instagram</span>
+                <span>callimorphose</span>
               </button>
               <button class="button is-small is-primary is-light" @click="openLink(`mailto: ${email}`)">
                 <span class="icon">

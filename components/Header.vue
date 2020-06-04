@@ -61,6 +61,12 @@
               réalisations
             </nuxt-link>
           </div>
+
+          <div class="navbar-item">
+            <nuxt-link to="/contact">
+              contact
+            </nuxt-link>
+          </div>
         </div>
       </div>
     </div>

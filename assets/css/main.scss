@@ -10,15 +10,12 @@ $family-secondary: $family-serif;
 $paper: #FBFBF8;
 
 $primary: #923828;
+$link: $primary !default;
 
 @import '~bulma';
 
 body {
   background-color: $paper;
-}
-
-p {
-  font-size: 0.8rem;
 }
 
 .title {
@@ -36,7 +33,7 @@ a {
     .navbar-item {
       font-family: $family-serif;
       font-size: 2rem;
-      border-bottom: 1px solid $dark;
+      border-top: 1px solid $dark;
     }
   }
 }

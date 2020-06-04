@@ -32,6 +32,7 @@ export default {
   */
   plugins: [
     { src: '~plugins/helpers' },
+    { src: '~plugins/vuelidate' },
     { src: '~plugins/vue-gallery.client.js' },
     { src: '~plugins/v-body-scroll-lock.client.js' }
   ],
@@ -43,7 +44,8 @@ export default {
     '@nuxtjs/eslint-module',
     '@nuxtjs/fontawesome',
     ['@nuxtjs/google-analytics', {
-      id: 'UA-51815367-6'
+      id: 'UA-51815367-6',
+      dev: false
     }]
   ],
   /*
@@ -78,7 +80,7 @@ export default {
   */
   fontawesome: {
     icons: {
-      solid: ['faEnvelope'],
+      solid: ['faEnvelope', 'faExclamationTriangle'],
       brands: ['faInstagram']
     }
   },
