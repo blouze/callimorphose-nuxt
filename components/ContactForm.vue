@@ -12,15 +12,15 @@
               <span class="icon is-small is-left">
                 <font-awesome-icon :icon="['fas', 'envelope']" />
               </span>
-              <span v-if="$v.email.$error" class="icon is-small is-right has-text-danger">
+              <span v-if="$v.email.$dirty && $v.email.$invalid" class="icon is-small is-right has-text-danger">
                 <font-awesome-icon :icon="['fas', 'exclamation-triangle']" />
               </span>
             </div>
-            <p v-if="!$v.email.required" class="help is-danger">
-              Email is required
+            <p v-if="$v.email.$dirty && !$v.email.required" class="help is-danger">
+              inscrivez votre email
             </p>
-            <p v-if="!$v.email.isEmail" class="help is-danger">
-              This email is invalid
+            <p v-if="$v.email.$dirty && !$v.email.isEmail" class="help is-danger">
+              cette adresse est érronée
             </p>
           </div>
         </div>
@@ -32,14 +32,27 @@
         </div>
         <div class="field-body">
           <div class="field">
-            <div class="control">
-              <input v-model="last_name" class="input" placeholder="nom">
+            <div class="control has-icons-right">
+              <input v-model="$v.last_name.$model" class="input" placeholder="nom">
+              <span v-if="$v.last_name.$dirty && $v.last_name.$invalid" class="icon is-small is-right has-text-danger">
+                <font-awesome-icon :icon="['fas', 'exclamation-triangle']" />
+              </span>
             </div>
+            <p v-if="$v.last_name.$dirty && !$v.last_name.required" class="help is-danger">
+              inscrivez votre nom
+            </p>
           </div>
+
           <div class="field">
-            <div class="control">
-              <input v-model="first_name" class="input" placeholder="prénom">
+            <div class="control has-icons-right">
+              <input v-model="$v.first_name.$model" class="input" placeholder="prénom">
+              <span v-if="$v.first_name.$dirty && $v.first_name.$invalid" class="icon is-small is-right has-text-danger">
+                <font-awesome-icon :icon="['fas', 'exclamation-triangle']" />
+              </span>
             </div>
+            <p v-if="$v.first_name.$dirty && !$v.first_name.required" class="help is-danger">
+              inscrivez votre prénom
+            </p>
           </div>
         </div>
       </div>
@@ -77,7 +90,7 @@
 
       <div class="field is-horizontal">
         <div class="field-label is-normal" />
-        <div class="field-body">
+        <div class="field-body ">
           <div class="field">
             <div class="control">
               <label class="checkbox">
@@ -91,7 +104,7 @@
 
       <div class="field is-grouped is-grouped-right">
         <div class="control">
-          <button class="button is-link" :disabled="$v.email.$error || !consent">
+          <button class="button is-link" :disabled="$v.$invalid || !consent" :class="{ 'is-loading': loading }">
             Envoyer
           </button>
         </div>
@@ -107,11 +120,12 @@ export default {
   name: 'ContactForm',
 
   props: {
-    disabled: { type: Boolean, default: false }
+    disabled: { type: Boolean, default: false },
+    loading: { type: Boolean, default: false }
   },
 
   data: () => ({
-    email: 'blouze@gmail.com',
+    email: '',
     first_name: '',
     last_name: '',
     message: '',
@@ -120,17 +134,19 @@ export default {
 
   validations: {
     email: { required, isEmail },
-    message: { required }
+    first_name: { required },
+    last_name: { required },
+    message: {}
   },
 
   methods: {
     checkForm (e) {
       if (!this.$v.error) {
         this.$emit('submit', {
-          email: this.email,
-          first_name: this.first_name,
-          last_name: this.last_name,
-          message: this.message
+          email: this.$v.email.$model,
+          first_name: this.$v.first_name.$model,
+          last_name: this.$v.last_name.$model,
+          message: this.$v.message.$model
         })
       }
       e.preventDefault()

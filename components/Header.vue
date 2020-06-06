@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation" :class="{ 'is-spaced': !dense }">
-    <div class="container">
+    <div v-bsl="isMenuOpen" class="container">
       <div ref="brand" class="navbar-brand">
         <component :is="$route.name !== 'index' ? 'nuxt-link' : 'div'" to="/">
           <figure
@@ -29,40 +29,23 @@
 
       <div
         id="navbarMenu"
-        v-bsl="isMenuOpen"
         class="navbar-menu is-shadowless"
         :class="{ 'is-active': isMenuOpen }"
       >
         <div class="navbar-end">
-          <div class="navbar-item has-dropdown is-hoverable">
-            <nuxt-link class="navbar-item" to="/ecritures">
+          <div class="navbar-item" :class="{ 'is-active': $route.name === 'ecritures' }">
+            <nuxt-link to="/ecritures">
               écritures
             </nuxt-link>
-
-            <!-- <div class="navbar-dropdown">
-              <a class="navbar-item">
-                About
-              </a>
-              <a class="navbar-item">
-                Jobs
-              </a>
-              <a class="navbar-item">
-                Contact
-              </a>
-              <hr class="navbar-divider">
-              <a class="navbar-item">
-                Report an issue
-              </a>
-            </div> -->
           </div>
 
-          <div class="navbar-item">
+          <div class="navbar-item" :class="{ 'is-active': $route.name === 'realisations' }">
             <nuxt-link to="/realisations">
               réalisations
             </nuxt-link>
           </div>
 
-          <div class="navbar-item">
+          <div class="navbar-item" :class="{ 'is-active': $route.name === 'contact' }">
             <nuxt-link to="/contact">
               contact
             </nuxt-link>
@@ -106,7 +89,7 @@ export default {
 
 <style lang="stylus" scoped>
 .navbar, .navbar-brand *, .navbar-menu
-  transition: 0.3s
+  transition: all 0.5s ease-in-out
 
 .navbar-brand
   opacity: 1
@@ -115,7 +98,7 @@ export default {
 
 @media screen and (max-width: 1023px)
   .navbar-menu
-    min-height: 0;
+    min-height: 0
     &.is-active
-      min-height: calc(100vh - 8rem);
+      min-height: calc(100vh - 8rem)
 </style>

@@ -31,15 +31,16 @@
                 </figure>
               </div>
             </div>
+
             <div class="level">
               <div class="level-item">
-                <nuxt-link v-if="prevEcriture" class="title is-5" :to="{ name: 'ecritures-slug', params: { slug: prevEcriture.slug } }">
-                  &#x2190;&nbsp;{{ prevEcriture.name }}
+                <nuxt-link v-if="prev" class="title is-5" :to="{ name: 'ecritures-slug', params: { slug: prev.slug } }">
+                  &#x2190;&nbsp;{{ prev.name }}
                 </nuxt-link>
               </div>
               <div class="level-item">
-                <nuxt-link v-if="nextEcriture" class="title is-5" :to="{ name: 'ecritures-slug', params: { slug: nextEcriture.slug } }">
-                  {{ nextEcriture.name }}&nbsp;&#x2192;
+                <nuxt-link v-if="next" class="title is-5" :to="{ name: 'ecritures-slug', params: { slug: next.slug } }">
+                  {{ next.name }}&nbsp;&#x2192;
                   <div />
                 </nuxt-link>
               </div>
@@ -61,7 +62,6 @@
 
 <script>
 import ecritureQuery from '~/apollo/queries/ecriture/ecriture'
-import ecrituresCountQuery from '~/apollo/queries/ecriture/ecrituresCount'
 
 export default {
   name: 'EcritureDetailsPage',
@@ -69,22 +69,8 @@ export default {
     ecriture: {
       prefetch: true,
       query: ecritureQuery,
-      variables () { return { where: { slug: this.$route.params.slug } } },
-      update ({ ecritures }) { return ecritures && ecritures[0] }
-    },
-    ecrituresCount: {
-      prefetch: true,
-      query: ecrituresCountQuery
-    },
-    nextEcriture: {
-      query: ecritureQuery,
-      variables () { return { where: { priority: (this.priority + this.ecrituresCount + 1) % this.ecrituresCount } } },
-      update ({ ecritures }) { return ecritures && ecritures[0] }
-    },
-    prevEcriture: {
-      query: ecritureQuery,
-      variables () { return { where: { priority: (this.priority + this.ecrituresCount - 1) % this.ecrituresCount } } },
-      update ({ ecritures }) { return ecritures && ecritures[0] }
+      variables () { return { slug: this.$route.params.slug } },
+      update ({ ecritureBySlug }) { return ecritureBySlug }
     }
   },
   data: () => ({ index: null }),
@@ -96,7 +82,9 @@ export default {
     realisations () { return this.ecriture && this.ecriture.realisations },
     imgs () {
       return this.realisations && this.realisations.map(realisation => realisation.images[0].formats.large.url).concat(this.image)
-    }
+    },
+    prev () { return this.ecriture && this.ecriture.prev },
+    next () { return this.ecriture && this.ecriture.next }
   },
   head () {
     return {

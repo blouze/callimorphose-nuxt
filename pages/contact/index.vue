@@ -28,18 +28,19 @@
             </client-only>
           </div>
           <div class="column">
-            <div class="card-content">
-              <ContactForm v-if="!messageSent" :disabled="formSubmitted" @submit="onFormSubmit" />
-              <div v-if="formError">
-                <p class="has-text-danger">
-                  Une erreur est survenue pendant l'envoi du message: {{ formError }}
-                </p>
-                <p>Réessayez plus tard...</p>
-              </div>
-              <div v-else-if="messageSent">
-                <p>Votre message a bien été envoyé.</p>
-                <p>Nous allons bientôt vous répondre.</p>
-              </div>
+            <ContactForm v-if="!messageSent" :disabled="formSubmitted" :loading="formSubmitted" @submit="onFormSubmit" />
+            <div v-if="formError">
+              <p class="has-text-danger">
+                Une erreur est survenue pendant l'envoi du message:
+              </p>
+              <p class="has-text-danger">
+                {{ formError }}
+              </p>
+              <p>Réessayez plus tard...</p>
+            </div>
+            <div v-else-if="messageSent">
+              <p>Votre message a bien été envoyé.</p>
+              <p>Nous allons bientôt vous répondre.</p>
             </div>
           </div>
         </div>
@@ -69,14 +70,9 @@ export default {
         data: params
       }
       ).then(({ data }) => {
-        if (data === 'ok') {
-          this.messageSent = true
-        } else {
-          this.messageSent = true
-          this.formError = data.message
-        }
+        this.messageSent = true
       }).catch((err) => {
-        this.formError = err
+        this.formError = err.response.data.message
       }).finally(() => {
         this.formSubmitted = false
       })
