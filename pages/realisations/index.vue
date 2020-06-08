@@ -33,7 +33,7 @@
             :key="imageId"
             class="column is-6"
           >
-            <figure class="gallery-item image is-4by3" @click="setGalleryId(id, imageIndex)">
+            <figure class="gallery-item image" @click="setGalleryId(id, imageIndex)">
               <img :src="getImagePath(formats['medium'].url)">
             </figure>
           </div>
