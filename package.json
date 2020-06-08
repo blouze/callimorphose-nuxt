@@ -1,7 +1,7 @@
 {
   "name": "callimorphose",
   "version": "1.0.0",
-  "description": "Callimorphose client website",
+  "description": "Callimorphose, atelier de calligraphie latine, Paris.",
   "author": "Blaise",
   "private": true,
   "scripts": {

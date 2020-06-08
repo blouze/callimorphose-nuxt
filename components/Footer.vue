@@ -1,8 +1,8 @@
 <template>
   <footer class="footer has-background-white-ter">
-    <div class="container">
-      <div class="content">
-        <div class="tile is-ancestor">
+    <section class="section">
+      <div class="container">
+        <div class="tile is-ancestor" style="align-items: flex-end;">
           <div class="tile is-child has-text-centered is-4">
             <figure class="image is-3by1">
               <img src="~/assets/CALLIMORPHOSE.svg" class="navbar-item">
@@ -11,6 +11,27 @@
               Atelier de calligraphie
             </h6>
           </div>
+
+          <div class="tile is-child is-4">
+            <ul class="links">
+              <li class="navbar-item" :class="{ 'is-active': $route.name === 'ecritures' || $route.name === 'ecritures-slug' }">
+                <nuxt-link :to="{ name: 'ecritures' }">
+                  écritures
+                </nuxt-link>
+              </li>
+              <li class="navbar-item" :class="{ 'is-active': $route.name === 'realisations' }">
+                <nuxt-link :to="{ name: 'realisations' }">
+                  réalisations
+                </nuxt-link>
+              </li>
+              <li class="navbar-item" :class="{ 'is-active': $route.name === 'contact' }">
+                <nuxt-link :to="{ name: 'contact' }">
+                  contact
+                </nuxt-link>
+              </li>
+            </ul>
+          </div>
+
           <div class="tile is-child">
             <div class="buttons">
               <button class="button is-small is-primary is-light" @click="openLink(instagramURL)">
@@ -28,8 +49,12 @@
             </div>
           </div>
         </div>
+
+        <p class="title is-7 has-text-right">
+          DISPLAY JERKY © {{ new Date().getFullYear() }}
+        </p>
       </div>
-    </div>
+    </section>
   </footer>
 </template>
 
@@ -39,13 +64,16 @@ export default {
   computed: {
     email () { return process.env.EMAIL_ADRESS },
     instagramURL () { return process.env.INSTAGRAM_URL }
-  },
-  methods: {
-    openLink (url) { window.open(url) }
   }
 }
 </script>
-
-<style>
-
+<style lang="stylus" scoped>
+.links
+  list-style: none
+  margin: 0
+  border-left: 1px solid black
+  li
+    padding: 0 0.5rem
+.tile
+  padding-bottom: 2rem
 </style>

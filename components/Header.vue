@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation" :class="{ 'is-spaced': !dense }">
-    <div v-bsl="isMenuOpen" class="container">
+    <div class="container">
       <div ref="brand" class="navbar-brand">
         <component :is="$route.name !== 'index' ? 'nuxt-link' : 'div'" to="/">
           <figure
@@ -33,20 +33,20 @@
         :class="{ 'is-active': isMenuOpen }"
       >
         <div class="navbar-end">
-          <div class="navbar-item" :class="{ 'is-active': $route.name === 'ecritures' }">
-            <nuxt-link to="/ecritures">
+          <div class="navbar-item" :class="{ 'is-active': $route.name === 'ecritures' || $route.name === 'ecritures-slug' }">
+            <nuxt-link :to="{ name: 'ecritures' }">
               écritures
             </nuxt-link>
           </div>
 
           <div class="navbar-item" :class="{ 'is-active': $route.name === 'realisations' }">
-            <nuxt-link to="/realisations">
+            <nuxt-link :to="{ name: 'realisations' }">
               réalisations
             </nuxt-link>
           </div>
 
           <div class="navbar-item" :class="{ 'is-active': $route.name === 'contact' }">
-            <nuxt-link to="/contact">
+            <nuxt-link :to="{ name: 'contact' }">
               contact
             </nuxt-link>
           </div>

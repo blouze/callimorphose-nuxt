@@ -18,7 +18,7 @@
     <section class="section">
       <div class="container">
         <div class="columns">
-          <div class="column">
+          <div class="column is-7">
             <client-only>
               <figure class="image">
                 <video width="1280" height="720" autoplay loop>
@@ -46,6 +46,23 @@
         </div>
       </div>
     </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="tile is-ancestor is-parent">
+          <div class="tile is-child is-8">
+            <h3 class="title is-3">
+              À propos
+            </h3>
+            <p>
+              Diplômée d'état en design objet, puis élève de Serge&nbsp;Cortesi et collaboratrice de <a class="nuxt-link" @click="openLink(mdlcURL)">La&nbsp;Maison&nbsp;de&nbsp;la&nbsp;Calligraphie
+              </a>, Céline&nbsp;Renaudie crée en 2017 l'atelier&nbsp;Callimorphose.
+            </p>
+            <p>L'atelier propose des services de papeterie, prestations événementielles, travaux sur documents anciens, formation et cours particuliers...</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -57,6 +74,7 @@ export default {
   components: { ContactForm },
   data: () => ({
     videoURL: process.env.VIDEO_URL,
+    mdlcURL: 'https://www.lamaisondelacalligraphie.com',
     messageSent: false,
     formSubmitted: false,
     formError: null
@@ -76,6 +94,22 @@ export default {
       }).finally(() => {
         this.formSubmitted = false
       })
+    }
+  },
+  head () {
+    return {
+      title: 'contact | Callimorphose',
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: 'description',
+          name: 'description-contact',
+          content: `
+            Contact - parlez-nous de vos envies, de votre projet ou posez simplement vos questions. 
+            À propos - Céline Renaudie crée en 2017 l'atelier Callimorphose.
+          `
+        }
+      ]
     }
   }
 }

@@ -34,7 +34,13 @@ export default {
       title: 'écritures | Callimorphose',
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-        // { hid: 'description', name: 'description', content: 'My custom description' }
+        {
+          hid: 'description-écritures',
+          name: 'description',
+          content: `
+            Écritures - laissez vous surprendre par un savoir-faire unique tracée à la plume et à l'encre.
+          `
+        }
       ]
     }
   }

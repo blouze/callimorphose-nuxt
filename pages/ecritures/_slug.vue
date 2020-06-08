@@ -10,12 +10,27 @@
               <img :src="getImagePath(image)">
             </figure>
           </div>
-          <div class="tile is-vertical is-4 is-parent">
+          <div class="tile is-vertical is-parent">
             <div class="tile is-child">
-              <h2 class="title is-2 has-text-centered">
+              <div class="level">
+                <div class="level-left">
+                  <nuxt-link v-if="prev" class="title is-6" :to="{ name: 'ecritures-slug', params: { slug: prev.slug } }">
+                    &#x2190;&nbsp;{{ prev.name }}
+                  </nuxt-link>
+                </div>
+                <div class="level-right">
+                  <nuxt-link v-if="next" class="title is-6" :to="{ name: 'ecritures-slug', params: { slug: next.slug } }">
+                    {{ next.name }}&nbsp;&#x2192;
+                    <div />
+                  </nuxt-link>
+                </div>
+              </div>
+
+              <h2 class="title is-2">
                 {{ name }}
               </h2>
-              <p class="has-text-justified">
+
+              <p class="content">
                 {{ description }}
               </p>
             </div>
@@ -29,20 +44,6 @@
                 <figure v-if="images" class="image gallery-item" @click="index = imageIndex">
                   <img :src="getImagePath(images[0].formats.medium.url)" :alt="title">
                 </figure>
-              </div>
-            </div>
-
-            <div class="level">
-              <div class="level-item">
-                <nuxt-link v-if="prev" class="title is-5" :to="{ name: 'ecritures-slug', params: { slug: prev.slug } }">
-                  &#x2190;&nbsp;{{ prev.name }}
-                </nuxt-link>
-              </div>
-              <div class="level-item">
-                <nuxt-link v-if="next" class="title is-5" :to="{ name: 'ecritures-slug', params: { slug: next.slug } }">
-                  {{ next.name }}&nbsp;&#x2192;
-                  <div />
-                </nuxt-link>
               </div>
             </div>
           </div>

@@ -9,7 +9,8 @@ $family-secondary: $family-serif;
 
 $paper: #FBFBF8;
 
-$primary: #923828;
+// $primary: #923828;
+$primary: #c46258;
 $link: $primary !default;
 
 @import '~bulma';
@@ -39,9 +40,12 @@ body {
 }
   
 
-$animLen: 0.3s;
-.view-enter-active, .view-leave-active {
-  transition: opacity $animLen ease-in-out, transform $animLen ease;
+$animLen: 0.25s;
+.view-enter-active {
+  transition: opacity $animLen ease-out, transform $animLen ease;
+}
+.view-leave-active {
+  transition: opacity $animLen ease-in, transform $animLen ease;
 }
 .view-enter-active {
   transition-delay: $animLen;

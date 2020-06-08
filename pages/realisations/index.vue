@@ -82,7 +82,13 @@ export default {
       title: 'réalisations | Callimorphose',
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-        // { hid: 'description', name: 'description', content: 'My custom description' }
+        {
+          hid: 'description-realisations',
+          name: 'description',
+          content: `
+            Réalisations - consultez en un coup d'oeil les travaux de calligraphie réalisés par l'atelier Callimorphose.
+          `
+        }
       ]
     }
   }

@@ -77,7 +77,7 @@
 
       <div class="field is-horizontal">
         <div class="field-label is-normal">
-          <label class="label">message&nbsp;:</label>
+          <!-- <label class="label">message&nbsp;:</label> -->
         </div>
         <div class="field-body">
           <div class="field">
@@ -90,7 +90,7 @@
 
       <div class="field is-horizontal">
         <div class="field-label is-normal" />
-        <div class="field-body ">
+        <div class="field-body">
           <div class="field">
             <div class="control">
               <label class="checkbox">
