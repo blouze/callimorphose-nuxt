@@ -19,7 +19,7 @@ export default {
 
 <style lang="stylus" scoped>
 ul.leaders
-  max-width: 50em
+  max-width: 60em
   padding: 0.2rem 0
   overflow-x: hidden
   list-style: none

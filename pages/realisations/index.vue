@@ -1,11 +1,15 @@
 <template>
-  <div>
+  <div v-if="$apollo.loading">
+    <Loader />
+  </div>
+
+  <div v-else>
     <section class="section" />
 
-    <section class="section hero is-small">
+    <section class="section hero">
       <div class="hero-body">
         <div class="container">
-          <h1 class="title is-2">
+          <h1 class="title is-3">
             réalisations
           </h1>
           <h2 class="subtitle">
@@ -17,7 +21,7 @@
 
     <section v-for="{id, title, date, images} in realisations" :key="id" class="section">
       <div class="container">
-        <h3 class="title">
+        <h3 class="title is-4">
           <DotLeader>
             {{ title }}
             <template v-slot:end>
@@ -53,11 +57,11 @@
 
 <script>
 import realisationsQuery from '~/apollo/queries/realisation/realisations'
-import { DotLeader } from '~/components'
+import { Loader, DotLeader } from '~/components'
 
 export default {
   name: 'RealisationsPage',
-  components: { DotLeader },
+  components: { Loader, DotLeader },
   apollo: {
     realisations: {
       prefetch: true,

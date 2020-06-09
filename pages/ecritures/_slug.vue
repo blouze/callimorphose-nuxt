@@ -1,5 +1,9 @@
 <template>
-  <div>
+  <div v-if="$apollo.loading">
+    <Loader />
+  </div>
+
+  <div v-else>
     <section class="section" />
 
     <section class="section">
@@ -12,7 +16,11 @@
           </div>
           <div class="tile is-vertical is-parent">
             <div class="tile is-child">
-              <div class="level">
+              <h2 class="title is-3 has-text-centered">
+                {{ name }}
+              </h2>
+
+              <div class="level is-mobile">
                 <div class="level-left">
                   <nuxt-link v-if="prev" class="title is-6" :to="{ name: 'ecritures-slug', params: { slug: prev.slug } }">
                     &#x2190;&nbsp;{{ prev.name }}
@@ -25,10 +33,6 @@
                   </nuxt-link>
                 </div>
               </div>
-
-              <h2 class="title is-2">
-                {{ name }}
-              </h2>
 
               <p class="content">
                 {{ description }}
@@ -63,9 +67,11 @@
 
 <script>
 import ecritureQuery from '~/apollo/queries/ecriture/ecriture'
+import { Loader } from '~/components'
 
 export default {
   name: 'EcritureDetailsPage',
+  components: { Loader },
   apollo: {
     ecriture: {
       prefetch: true,
@@ -89,7 +95,7 @@ export default {
   },
   head () {
     return {
-      title: this.name && `${this.name.toUpperCase()} | écritures | Callimorphose`,
+      title: this.name ? `${this.name.charAt(0).toUpperCase() + this.name.slice(1)} | écritures | Callimorphose` : 'écritures | Callimorphose',
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         // { hid: 'description', name: 'description', content: 'My custom description' }

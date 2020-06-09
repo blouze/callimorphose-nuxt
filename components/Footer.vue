@@ -68,12 +68,16 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
+.footer
+  padding: 1.5rem 1.5rem 0.5rem
+
 .links
   list-style: none
   margin: 0
   border-left: 1px solid black
   li
     padding: 0 0.5rem
+
 .tile
   padding-bottom: 2rem
 </style>

@@ -5,7 +5,7 @@
     <section class="section hero is-small">
       <div class="hero-body">
         <div class="container">
-          <h1 class="title is-2">
+          <h1 class="title is-3">
             écritures
           </h1>
           <h2 class="subtitle">

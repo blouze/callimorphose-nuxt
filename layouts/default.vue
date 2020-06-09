@@ -24,11 +24,6 @@ export default {
       buttonText: 'Compris'
     }
   }),
-  computed: {
-    title () {
-      return this.$route.name
-    }
-  },
   head () {
     return {
       link: [
@@ -36,8 +31,7 @@ export default {
       ],
       bodyAttrs: {
         class: 'has-navbar-fixed-top'
-      },
-      title: this.title
+      }
     }
   }
 }

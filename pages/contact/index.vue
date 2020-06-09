@@ -18,16 +18,7 @@
     <section class="section">
       <div class="container">
         <div class="columns">
-          <div class="column is-7">
-            <client-only>
-              <figure class="image">
-                <video width="1280" height="720" autoplay loop>
-                  <source type="video/mp4" :src="videoURL">
-                </video>
-              </figure>
-            </client-only>
-          </div>
-          <div class="column">
+          <div class="column" style="order: 1;">
             <ContactForm v-if="!messageSent" :disabled="formSubmitted" :loading="formSubmitted" @submit="onFormSubmit" />
             <div v-if="formError">
               <p class="has-text-danger">
@@ -43,14 +34,15 @@
               <p>Nous allons bientôt vous répondre.</p>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="tile is-ancestor is-parent">
-          <div class="tile is-child is-8">
+          <div class="column is-7">
+            <client-only>
+              <figure class="image content">
+                <video width="1280" height="720" autoplay loop>
+                  <source type="video/mp4" :src="videoURL">
+                </video>
+              </figure>
+            </client-only>
             <h3 class="title is-3">
               À propos
             </h3>
@@ -113,8 +105,4 @@ export default {
     }
   }
 }
-
 </script>
-<style>
-
-</style>

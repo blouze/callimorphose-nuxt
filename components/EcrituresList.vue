@@ -8,7 +8,7 @@
           </figure>
         </div>
         <div class="card-content">
-          <h4 class="title is-4 has-text-centered">
+          <h4 class="title is-5 has-text-centered">
             {{ name }}
           </h4>
         </div>
