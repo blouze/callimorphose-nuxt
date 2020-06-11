@@ -1,8 +1,15 @@
 import { createApolloFetch } from 'apollo-fetch'
 require('dotenv').config()
 
+const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
+  router: {
+    base: 'callimorphose-nuxt'
+  }
+} : {}
+
 export default {
   mode: 'universal',
+  ...routerBase,
   /*
   ** Headers of the page
   */
