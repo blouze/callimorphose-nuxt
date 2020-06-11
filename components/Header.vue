@@ -8,7 +8,7 @@
             :style="{ 'width': (dense || $route.name === 'index') ? '60%' : '90%' }"
             :class="{ 'hidden': (!dense && $route.name === 'index') || isScrollEnd}"
           >
-            <img src="~/assets/CALLIMORPHOSE.svg" class="navbar-item">
+            <img src="~assets/CALLIMORPHOSE.svg" class="navbar-item">
           </figure>
         </component>
 

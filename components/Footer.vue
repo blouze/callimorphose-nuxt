@@ -5,7 +5,7 @@
         <div class="tile is-ancestor" style="align-items: flex-end;">
           <div class="tile is-child has-text-centered is-4">
             <figure class="image is-3by1">
-              <img src="~/assets/CALLIMORPHOSE.svg" class="navbar-item">
+              <img src="~assets/CALLIMORPHOSE.svg" class="navbar-item">
             </figure>
             <h6 class="title is-6">
               Atelier de calligraphie
