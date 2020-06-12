@@ -68,7 +68,8 @@ export default {
     '@nuxtjs/dotenv',
     '@nuxtjs/apollo',
     '@nuxtjs/svg',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots'
   ],
   apollo: {
     clientConfigs: {
