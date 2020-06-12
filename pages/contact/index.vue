@@ -19,7 +19,7 @@
       <div class="container">
         <div class="columns">
           <div class="column" style="order: 1;">
-            <ContactForm v-if="!messageSent" :disabled="formSubmitted" :loading="formSubmitted" @submit="onFormSubmit" />
+            <ContactForm :disabled="formSubmitted" :loading="formSubmitted" @submit="onFormSubmit" />
             <div v-if="formError">
               <p class="has-text-danger">
                 Une erreur est survenue pendant l'envoi du message:
@@ -28,10 +28,6 @@
                 {{ formError }}
               </p>
               <p>Réessayez plus tard...</p>
-            </div>
-            <div v-else-if="messageSent">
-              <p>Votre message a bien été envoyé.</p>
-              <p>Nous allons bientôt vous répondre.</p>
             </div>
           </div>
 
@@ -66,7 +62,6 @@ export default {
   data: () => ({
     videoURL: process.env.VIDEO_URL,
     mdlcURL: 'https://www.lamaisondelacalligraphie.com',
-    messageSent: false,
     formSubmitted: false,
     formError: null
   }),
@@ -79,7 +74,7 @@ export default {
         data: params
       }
       ).then(({ data }) => {
-        this.messageSent = true
+        this.$router.push({ name: 'contact-merci', params: { messageSent: true } })
       }).catch((err) => {
         this.formError = err.response.data.message
       }).finally(() => {
