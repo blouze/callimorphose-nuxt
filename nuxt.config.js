@@ -67,7 +67,8 @@ export default {
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
     '@nuxtjs/apollo',
-    '@nuxtjs/svg'
+    '@nuxtjs/svg',
+    '@nuxtjs/sitemap'
   ],
   apollo: {
     clientConfigs: {
@@ -91,6 +92,9 @@ export default {
       solid: ['faEnvelope', 'faExclamationTriangle'],
       brands: ['faInstagram']
     }
+  },
+  sitemap: {
+    hostname: 'https://callimorphose.com'
   },
   build: {
     postcss: {
