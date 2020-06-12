@@ -10,8 +10,8 @@
       <div class="container">
         <div class="tile is-ancestor">
           <div class="tile is-8 is-parent">
-            <figure v-if="image" class="image gallery-item" @click="index = imgs.length - 1">
-              <img :src="getImagePath(image)">
+            <figure v-if="image" class="image gallery-item" @click="index = 0">
+              <img loading="lazy" v-bind="getImageProps(image, 'large')">
             </figure>
           </div>
           <div class="tile is-vertical is-parent">
@@ -39,14 +39,14 @@
               </p>
             </div>
 
-            <div class="tile columns is-multiline">
+            <div class="tile columns is-multiline" style="justify-content: flex-end">
               <div
-                v-for="({ id, title, images }, imageIndex) in realisations"
-                :key="id"
+                v-for="(real, realIndex) in reals"
+                :key="real.id"
                 class="column is-half"
               >
-                <figure v-if="images" class="image gallery-item" @click="index = imageIndex">
-                  <img :src="getImagePath(images[0].formats.medium.url)" :alt="title">
+                <figure class="image gallery-item" @click="index = realIndex + 1">
+                  <img loading="lazy" v-bind="getImageProps(real, 'small')">
                 </figure>
               </div>
             </div>
@@ -57,7 +57,7 @@
 
     <client-only>
       <v-gallery
-        :images="imgs ? imgs.map(img => getImagePath(img)) : []"
+        :images="images.map(img => getImageProps(img, 'large').src)"
         :index="index"
         @close="index = null"
       />
@@ -84,14 +84,12 @@ export default {
   computed: {
     name () { return this.ecriture && this.ecriture.name },
     priority () { return this.ecriture && this.ecriture.priority },
-    image () { return this.ecriture && this.ecriture.image && this.ecriture.image.formats.large.url },
+    image () { return this.ecriture && this.ecriture.image && this.ecriture.image },
     description () { return this.ecriture && this.ecriture.description },
-    realisations () { return this.ecriture && this.ecriture.realisations },
-    imgs () {
-      return this.realisations && this.realisations.map(realisation => realisation.images[0].formats.large.url).concat(this.image)
-    },
+    reals () { return this.ecriture && this.ecriture.reals },
     prev () { return this.ecriture && this.ecriture.prev },
-    next () { return this.ecriture && this.ecriture.next }
+    next () { return this.ecriture && this.ecriture.next },
+    images () { return [this.image].concat(this.reals) }
   },
   head () {
     return {

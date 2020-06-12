@@ -4,11 +4,11 @@
       <div class="card">
         <div class="card-image">
           <figure v-if="image" class="image is-4by3">
-            <img :src="getImagePath(image.formats['medium'].url)">
+            <img loading="lazy" v-bind="getImageProps(image, 'medium')">
           </figure>
         </div>
         <div class="card-content">
-          <h4 class="title is-5 has-text-centered">
+          <h4 class="title is-4 has-text-centered">
             {{ name }}
           </h4>
         </div>

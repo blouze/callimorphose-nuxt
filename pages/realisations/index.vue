@@ -33,12 +33,12 @@
         </h3>
         <div class="columns is-multiline">
           <div
-            v-for="({id: imageId, formats}, imageIndex) in images"
-            :key="imageId"
+            v-for="(image, imageIndex) in images"
+            :key="image.id"
             class="column is-6"
           >
             <figure class="gallery-item image" @click="setGalleryId(id, imageIndex)">
-              <img :src="getImagePath(formats['medium'].url)">
+              <img loading="lazy" v-bind="getImageProps(image, 'medium')">
             </figure>
           </div>
         </div>
@@ -72,7 +72,7 @@ export default {
   computed: {
     galleryImages () {
       const realisation = this.realisations && this.realisations.find(r => r.id === this.galleryId)
-      return realisation && realisation.images.map(image => this.getImagePath(image.formats.large.url))
+      return realisation && realisation.images.map(image => this.getImageProps(image, 'large').src)
     }
   },
   methods: {
