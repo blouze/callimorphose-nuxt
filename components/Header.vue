@@ -5,7 +5,7 @@
         <component :is="$route.name !== 'index' ? 'nuxt-link' : 'div'" to="/">
           <figure
             class="image"
-            :style="{ 'width': (dense || $route.name === 'index') ? '60%' : '90%' }"
+            :style="{ 'width': (dense || $route.name === 'index') ? '60%' : '80%' }"
             :class="{ 'hidden': (!dense && $route.name === 'index') || isScrollEnd}"
           >
             <img src="~assets/CALLIMORPHOSE.svg" class="navbar-item">

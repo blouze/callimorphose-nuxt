@@ -43,7 +43,7 @@
               À propos
             </h3>
             <p>
-              Diplômée d'état en design objet, puis élève de Serge&nbsp;Cortesi et collaboratrice de <a @click="openLink(mdlcURL)">La&nbsp;Maison&nbsp;de&nbsp;la&nbsp;Calligraphie</a>, Céline&nbsp;Renaudie crée en 2017 l'atelier&nbsp;Callimorphose.
+              Diplômée d'état en design objet, puis élève de Serge&nbsp;Cortesi et collaboratrice de <a @click="openLink(mdlcURL)">La&nbsp;Maison&nbsp;de&nbsp;la&nbsp;Calligraphie</a>, <span class="celine-renaudie">Céline&nbsp;Renaudie</span> crée en 2017 l'atelier&nbsp;Callimorphose.
             </p>
             <p>L'atelier propose des services de papeterie, prestations événementielles, travaux sur documents anciens, formation et cours particuliers...</p>
           </div>
@@ -100,3 +100,7 @@ export default {
   }
 }
 </script>
+<style lang="stylus" scoped>
+.celine-renaudie
+  text-decoration-line: underline
+</style>
