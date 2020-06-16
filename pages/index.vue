@@ -1,16 +1,23 @@
 <template>
   <div class="">
-    <section class="hero is-fullheight column is-half is-offset-one-quarter">
+    <section class="hero is-medium column is-half is-offset-one-quarter">
       <div class="hero-body">
         <div class="container">
           <object type="image/svg+xml" :data="Animation" style="width: 100%" />
         </div>
       </div>
+      <figure class="has-text-centered">
+        <img src="~/assets/separator.svg">
+      </figure>
     </section>
 
-    <section v-if="!$apollo.queries.ecritures.loading" class="section">
-      <div class="container">
-        <EcrituresList />
+    <section class="section">
+      <div v-if="$apollo.queries.ecritures.loading">
+        <Loader />
+      </div>
+
+      <div v-else class="container">
+        <EcrituresList :ecritures="ecritures" />
       </div>
     </section>
   </div>
@@ -19,18 +26,18 @@
 <script>
 import Animation from '@/assets/CALLIMORPHOSE_draw.svg?data'
 import ecrituresQuery from '~/apollo/queries/ecriture/ecritures'
-import { EcrituresList } from '~/components'
+import { EcrituresList, Loader } from '~/components'
 
 export default {
   name: 'IndexPage',
-  components: { EcrituresList },
-  data: () => ({ Animation }),
+  components: { EcrituresList, Loader },
   apollo: {
     ecritures: {
       prefetch: true,
       query: ecrituresQuery
     }
   },
+  data: () => ({ Animation }),
   head () {
     return {
       title: 'Callimorphose',

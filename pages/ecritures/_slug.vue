@@ -4,8 +4,6 @@
   </div>
 
   <div v-else>
-    <section class="section" />
-
     <section class="section">
       <div class="container">
         <div class="tile is-ancestor">

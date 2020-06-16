@@ -19,9 +19,17 @@ body {
   background-color: $paper;
 }
 
+html.has-navbar-fixed-top, body.has-navbar-fixed-top {
+  padding-top: 8.25rem;
+}
+
 .title {
   font-family: $family-secondary;
   font-weight: normal;
+}
+
+:focus {
+  outline-style: none;
 }
 
 @media screen and (max-width: 767px) {

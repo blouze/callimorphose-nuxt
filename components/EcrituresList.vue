@@ -18,15 +18,10 @@
 </template>
 
 <script>
-import ecrituresQuery from '~/apollo/queries/ecriture/ecritures'
-
 export default {
   name: 'EcrituresList',
-  apollo: {
-    ecritures: {
-      prefetch: true,
-      query: ecrituresQuery
-    }
+  props: {
+    ecritures: { type: Array, default: () => ([]) }
   }
 }
 </script>

@@ -1,7 +1,5 @@
 <template>
   <div>
-    <section class="section" />
-
     <section class="section hero is-small">
       <div class="hero-body">
         <div class="container">

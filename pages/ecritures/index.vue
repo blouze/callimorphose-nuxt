@@ -1,7 +1,5 @@
 <template>
   <div>
-    <section class="section" />
-
     <section class="section hero is-small">
       <div class="hero-body">
         <div class="container">
@@ -16,19 +14,30 @@
     </section>
 
     <section class="section">
-      <div class="container">
-        <EcrituresList />
+      <div v-if="$apollo.queries.ecritures.loading">
+        <Loader />
+      </div>
+
+      <div v-else class="container">
+        <EcrituresList :ecritures="ecritures" />
       </div>
     </section>
   </div>
 </template>
 
 <script>
-import { EcrituresList } from '~/components'
+import ecrituresQuery from '~/apollo/queries/ecriture/ecritures'
+import { EcrituresList, Loader } from '~/components'
 
 export default {
   name: 'EcrituresPage',
-  components: { EcrituresList },
+  components: { EcrituresList, Loader },
+  apollo: {
+    ecritures: {
+      prefetch: true,
+      query: ecrituresQuery
+    }
+  },
   head () {
     return {
       title: 'écritures | Callimorphose',
