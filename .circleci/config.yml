@@ -23,7 +23,7 @@ jobs:
           command: npm run test
       - run:
           name: build-project
-          command: npm run generate:gh-pages
+          command: yes n | npm run generate:gh-pages
       - run:
           name: Install and configure dependencies
           command: |
