@@ -7,7 +7,7 @@
         </div>
       </div>
       <figure class="has-text-centered">
-        <img src="~/assets/separator.svg">
+        <embed src="~/assets/separator.svg">
       </figure>
     </section>
 

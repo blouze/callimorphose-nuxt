@@ -4,7 +4,7 @@
       <div class="card">
         <div class="card-image">
           <figure v-if="image" class="image is-4by3">
-            <img loading="lazy" v-bind="getImageProps(image, 'medium')">
+            <img v-bind="getImageProps(image, 'medium')">
           </figure>
         </div>
         <div class="card-content">
