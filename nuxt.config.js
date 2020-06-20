@@ -11,6 +11,7 @@ export default {
   mode: 'universal',
   ...routerBase,
   env: {
+    backendURL: process.env.BACKEND_URL || 'http://localhost:1337',
     emailAdress: process.env.EMAIL_ADRESS || 'bonjour@callimorphose.com',
     instagramURL: process.env.INSTAGRAM_URL || 'https://www.instagram.com/callimorphose',
     videoURL: process.env.VIDEO_URL || 'https://storage.googleapis.com/callimorphose.appspot.com/FREAKSHOW.mp4'
