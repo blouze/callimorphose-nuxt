@@ -80,7 +80,7 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: `${process.env.backendURL || 'http://localhost:1337'}/graphql`
+        httpEndpoint: `${process.env.BACKEND_URL}/graphql`
       }
     },
     includeNodeModules: true
