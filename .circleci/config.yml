@@ -1,4 +1,10 @@
 kversion: 2.1
+
+general:
+  branches:
+    only:
+     - master
+
 jobs:
   build:
     working_directory: ~/repo
@@ -23,7 +29,7 @@ jobs:
           command: npm run test
       - run:
           name: build-project
-          command: yes n | npm run generate:gh-pages
+          command: npm run generate:gh-pages
       - run:
           name: Install and configure dependencies
           command: |
