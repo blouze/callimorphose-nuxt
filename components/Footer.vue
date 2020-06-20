@@ -62,8 +62,8 @@
 export default {
   name: 'Footer',
   computed: {
-    email () { return process.env.EMAIL_ADRESS },
-    instagramURL () { return process.env.INSTAGRAM_URL }
+    email () { return process.env.emailAdress },
+    instagramURL () { return process.env.instagramURL }
   }
 }
 </script>

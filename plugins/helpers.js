@@ -7,13 +7,13 @@ Vue.mixin({
     openLink (url) { window.open(url) },
 
     getImagePath (imgUrl) {
-      return `${process.env.BACKEND_URL === 'http://localhost:1337' ? process.env.BACKEND_URL : ''}${imgUrl}`
+      return `${process.env.backendURL === 'http://localhost:1337' ? process.env.backendURL : ''}${imgUrl}`
     },
 
     getImageProps (img, size) {
       const { url: src, width, height } = img.formats[size]
       return {
-        src: `${process.env.BACKEND_URL === 'http://localhost:1337' ? process.env.BACKEND_URL : ''}${src}`,
+        src: `${process.env.backendURL === 'http://localhost:1337' ? process.env.backendURL : ''}${src}`,
         width,
         height
       }

@@ -10,6 +10,12 @@ const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
 export default {
   mode: 'universal',
   ...routerBase,
+  env: {
+    backendURL: process.env.BACKEND_URL || 'http://localhost:1337',
+    emailAdress: process.env.EMAIL_ADRESS || 'bonjour@callimorphose.com',
+    instagramURL: process.env.INSTAGRAM_URL || 'https://www.instagram.com/callimorphose',
+    videoURL: process.env.VIDEO_URL || 'https://storage.googleapis.com/callimorphose.appspot.com/FREAKSHOW.mp4'
+  },
   /*
   ** Headers of the page
   */
@@ -74,7 +80,7 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: `${process.env.BACKEND_URL || 'http://localhost:1337'}/graphql`
+        httpEndpoint: `${process.env.backendURL || 'http://localhost:1337'}/graphql`
       }
     },
     includeNodeModules: true
@@ -132,7 +138,7 @@ export default {
   },
   generate: {
     routes () {
-      const uri = `${process.env.BACKEND_URL || 'http://localhost:1337'}/graphql`
+      const uri = `${process.env.backendURL || 'http://localhost:1337'}/graphql`
       const apolloFetch = createApolloFetch({ uri })
       const query = `query Ecritures {
         ecritures {
