@@ -137,6 +137,7 @@ export default {
     name: 'view'
   },
   generate: {
+    fallback: true,
     routes () {
       const uri = `${process.env.backendURL || 'http://localhost:1337'}/graphql`
       const apolloFetch = createApolloFetch({ uri })
