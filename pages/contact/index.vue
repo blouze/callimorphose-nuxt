@@ -32,7 +32,14 @@
           <div class="column is-7">
             <client-only>
               <figure class="image content">
-                <video width="1280" height="720" autoplay loop>
+                <video
+                  width="1280"
+                  height="720"
+                  playsinline
+                  autoplay
+                  muted
+                  loop
+                >
                   <source type="video/mp4" :src="videoURL">
                 </video>
               </figure>
