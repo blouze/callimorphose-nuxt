@@ -39,6 +39,7 @@
               <img
                 v-lazy="getImageUrl(image)"
                 v-bind="getImageProps(image, 'medium', { lazy: true })"
+                :alt="title"
               >
             </figure>
           </div>

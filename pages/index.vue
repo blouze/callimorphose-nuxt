@@ -3,7 +3,7 @@
     <section class="hero is-medium column is-half is-offset-one-quarter">
       <div class="hero-body">
         <div class="container">
-          <object type="image/svg+xml" :data="Animation" style="width: 100%" />
+          <object type="image/svg+xml" :data="Animation" style="width: 100%" alt="Callimorphose" />
         </div>
       </div>
       <figure class="has-text-centered">
@@ -44,8 +44,8 @@ export default {
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         {
-          hid: 'description',
-          name: 'description-index',
+          hid: 'description-index',
+          name: 'description',
           content: `
             Callimorphose - découvrez l'univers de la calligraphie et du patrimoine de l'écriture.
           `
