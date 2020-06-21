@@ -5,7 +5,7 @@
         <div class="card-image">
           <figure v-if="image" class="image is-4by3">
             <img
-              v-lazy="`http://localhost:1337${image.formats['medium'].url}`"
+              v-lazy="getImageUrl(image)"
               v-bind="getImageProps(image, 'medium', { lazy: true })"
             >
           </figure>
@@ -25,6 +25,12 @@ export default {
   name: 'EcrituresList',
   props: {
     ecritures: { type: Array, default: () => ([]) }
+  },
+  methods: {
+    getImageUrl (image) {
+      return `${process.env.backendURL === 'http://localhost:1337' ? process.env.backendURL : ''}${image.formats.medium.url}`
+    }
   }
+
 }
 </script>

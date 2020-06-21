@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!$apollo.loading">
+  <div v-if="$apollo.loading">
     <Loader />
   </div>
 
@@ -37,7 +37,7 @@
           >
             <figure class="gallery-item image" @click="setGalleryId(id, imageIndex)">
               <img
-                v-lazy="`http://localhost:1337${image.formats['medium'].url}`"
+                v-lazy="getImageUrl(image)"
                 v-bind="getImageProps(image, 'medium', { lazy: true })"
               >
             </figure>
@@ -80,6 +80,9 @@ export default {
     setGalleryId (id, index) {
       this.galleryId = id
       this.imageIndex = index
+    },
+    getImageUrl (image) {
+      return `${process.env.backendURL === 'http://localhost:1337' ? process.env.backendURL : ''}${image.formats.medium.url}`
     }
   },
   head () {
