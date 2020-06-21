@@ -31,6 +31,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Cinzel&family=Nunito&display=swap' },
       { rel: 'preconnect', href: 'https://storage.googleapis.com', crossorigin: true }
     ]
   },
@@ -108,7 +109,9 @@ export default {
   sitemap: {
     hostname: 'https://callimorphose.com',
     exclude: ['/contact/merci'],
-    lastmod: new Date()
+    defaults: {
+      lastmod: new Date()
+    }
   },
   build: {
     postcss: {
@@ -158,5 +161,8 @@ export default {
         console.log(error)
       })
     }
-  }
+  },
+  serverMiddleware: [
+    '~serverMiddleware/seo.js'
+  ]
 }
