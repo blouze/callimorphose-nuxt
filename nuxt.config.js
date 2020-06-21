@@ -102,7 +102,8 @@ export default {
   },
   sitemap: {
     hostname: 'https://callimorphose.com',
-    exclude: ['/contact/merci']
+    exclude: ['/contact/merci'],
+    lastmod: new Date()
   },
   build: {
     postcss: {

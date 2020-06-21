@@ -34,19 +34,19 @@
       >
         <div class="navbar-end">
           <div class="navbar-item" :class="{ 'is-active': $route.name === 'ecritures' || $route.name === 'ecritures-slug' }">
-            <nuxt-link :to="{ name: 'ecritures' }">
+            <nuxt-link :to="{ name: 'ecritures' }" style="display: block;">
               écritures
             </nuxt-link>
           </div>
 
           <div class="navbar-item" :class="{ 'is-active': $route.name === 'realisations' }">
-            <nuxt-link :to="{ name: 'realisations' }">
+            <nuxt-link :to="{ name: 'realisations' }" style="display: block;">
               réalisations
             </nuxt-link>
           </div>
 
           <div class="navbar-item" :class="{ 'is-active': $route.name === 'contact' }">
-            <nuxt-link :to="{ name: 'contact' }">
+            <nuxt-link :to="{ name: 'contact' }" style="display: block;">
               contact
             </nuxt-link>
           </div>
