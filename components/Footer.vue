@@ -1,11 +1,11 @@
 <template>
-  <footer class="footer has-background-white-ter">
+  <footer class="footer has-background-white-bis">
     <section class="section">
       <div class="container">
         <div class="tile is-ancestor" style="align-items: flex-end;">
           <div class="tile is-child has-text-centered is-4">
             <figure class="image is-3by1">
-              <img src="~assets/CALLIMORPHOSE.svg" class="navbar-item">
+              <img src="~assets/CALLIMORPHOSE.svg" class="navbar-item" alt="Callimorphose">
             </figure>
             <h6 class="title is-6">
               Atelier de calligraphie
@@ -77,6 +77,8 @@ export default {
   border-left: 1px solid black
   li
     padding: 0 0.5rem
+    a
+      padding: 0.25rem
 
 .tile
   padding-bottom: 2rem

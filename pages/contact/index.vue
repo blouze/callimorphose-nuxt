@@ -85,8 +85,8 @@ export default {
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         {
-          hid: 'description',
-          name: 'description-contact',
+          hid: 'description-contact',
+          name: 'description',
           content: `
             Contact - parlez-nous de vos envies, de votre projet ou posez simplement vos questions. 
             À propos - Céline Renaudie crée en 2017 l'atelier Callimorphose.
