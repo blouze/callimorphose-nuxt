@@ -1,5 +1,5 @@
 <template>
-  <div v-if="$apollo.loading">
+  <div v-if="!$apollo.loading">
     <Loader />
   </div>
 
@@ -36,7 +36,10 @@
             class="column is-6"
           >
             <figure class="gallery-item image" @click="setGalleryId(id, imageIndex)">
-              <img loading="lazy" v-bind="getImageProps(image, 'medium')">
+              <img
+                v-lazy="`http://localhost:1337${image.formats['medium'].url}`"
+                v-bind="getImageProps(image, 'medium', { lazy: true })"
+              >
             </figure>
           </div>
         </div>

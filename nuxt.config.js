@@ -48,7 +48,8 @@ export default {
     { src: '~plugins/vuelidate' },
     { src: '~plugins/vue-gallery.js', mode: 'client' },
     { src: '~plugins/vue-cookie-law.js', mode: 'client' },
-    { src: '~plugins/v-body-scroll-lock.js', mode: 'client' }
+    { src: '~plugins/v-body-scroll-lock.js', mode: 'client' },
+    { src: '~plugins/vue-lazyload.js', mode: 'client' }
   ],
   /*
   ** Nuxt.js dev-modules

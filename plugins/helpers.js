@@ -6,17 +6,14 @@ Vue.mixin({
   methods: {
     openLink (url) { window.open(url) },
 
-    getImagePath (imgUrl) {
-      return `${process.env.backendURL === 'http://localhost:1337' ? process.env.backendURL : ''}${imgUrl}`
-    },
-
-    getImageProps (img, size) {
+    getImageProps (img, size, options = {}) {
       const { url: src, width, height } = img.formats[size]
-      return {
-        src: `${process.env.backendURL === 'http://localhost:1337' ? process.env.backendURL : ''}${src}`,
-        width,
-        height
+      const { lazy } = options
+      const props = { width, height }
+      if (!lazy) {
+        props.src = `${process.env.backendURL === 'http://localhost:1337' ? process.env.backendURL : ''}${src}`
       }
+      return props
     },
 
     formatDate (date) {

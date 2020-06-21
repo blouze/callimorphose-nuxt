@@ -4,7 +4,10 @@
       <div class="card">
         <div class="card-image">
           <figure v-if="image" class="image is-4by3">
-            <img v-bind="getImageProps(image, 'medium')">
+            <img
+              v-lazy="`http://localhost:1337${image.formats['medium'].url}`"
+              v-bind="getImageProps(image, 'medium', { lazy: true })"
+            >
           </figure>
         </div>
         <div class="card-content">
