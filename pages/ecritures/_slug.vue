@@ -9,7 +9,11 @@
         <div class="tile is-ancestor">
           <div class="tile is-8 is-parent">
             <figure v-if="image" class="image gallery-item" @click="index = 0">
-              <img loading="lazy" v-bind="getImageProps(image, 'large')">
+              <img
+                v-lazy="getImageUrl(image, 'large')"
+                v-bind="getImageProps(image, 'large', { lazy: true })"
+                :alt="name"
+              >
             </figure>
           </div>
           <div class="tile is-vertical is-parent">
@@ -44,7 +48,11 @@
                 class="column is-half"
               >
                 <figure class="image gallery-item" @click="index = realIndex + 1">
-                  <img loading="lazy" v-bind="getImageProps(real, 'small')">
+                  <img
+                    v-lazy="getImageUrl(real, 'small')"
+                    v-bind="getImageProps(real, 'small', { lazy: true })"
+                    :alt="name"
+                  >
                 </figure>
               </div>
             </div>
