@@ -77,7 +77,7 @@ export default {
       this.formSubmitted = true
       this.$axios({
         method: 'post',
-        url: `${process.env.BACKEND_URL}/contact`,
+        url: `${process.env.backendURL}/contact`,
         data: params
       }).then(({ data }) => {
         this.$router.push({ name: 'contact-merci', params: { messageSent: true } })

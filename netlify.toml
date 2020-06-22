@@ -3,7 +3,7 @@
   to = "/contact"
 
 [[redirects]]
-  from = "/portfolio"
+  from = "/portfolio/*"
   to = "/realisations"
 
 [[redirects]]

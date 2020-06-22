@@ -29,6 +29,10 @@ html.has-navbar-fixed-top, body.has-navbar-fixed-top {
   word-break: normal;
 }
 
+p {
+  white-space: pre-line;
+}
+
 :focus {
   outline-style: none;
 }
