@@ -3,9 +3,10 @@
 
 // Set your colors
 $black: #3d2c2e;
-$white: $light;
+$white: white;
+$paper: #FBFBF8;
 
-$primary: #424C55;
+$primary: #c46258;
 $primary-invert: findColorInvert($primary);
 $primary-light: #886F68;
 $primary-dark: findColorDark($primary-light);
@@ -25,19 +26,21 @@ $colors: mergeColorMaps($colors, (
 ));
 
 // Links
-// $link: $secondary;
-// $link-invert: $secondary-invert;
-// $link-focus-border: $secondary;
+$link: $primary !default;
+$link: $primary;
+$link-invert: $primary-invert;
+$link-focus-border: $primary;
 
-$family-sans-serif: "Heebo";
+$family-serif: "Cinzel";
+$family-sans-serif: "Nunito";
 $family-primary: $family-sans-serif, sans-serif;
 
-$scheme-main: $white;
+$scheme-main: $paper;
 $text: $black;
 $body-weight: 400;
 
-$footer-background-color: $primary;
-$footer-color: $primary-invert;
+$footer-background-color: $black;
+$footer-color: $paper;
 
 $modal-background-background-color: bulmaRgba($primary, 0.92);
 $snackbar-background-color: $primary;
@@ -46,3 +49,8 @@ $snackbar-color: $white;
 // Import Bulma and Buefy styles
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
+
+.title {
+  font-family: $family-serif;
+  font-weight: normal;
+}

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar :fixed="hasFixedNavbar" type="is-secondary" />
+    <navbar :fixed="hasFixedNavbar" />
     <div
       class="container"
       style="min-height: 100vh;"

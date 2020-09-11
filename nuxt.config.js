@@ -26,7 +26,16 @@ export default {
     SANITY_DATASET: process.env.SANITY_DATASET,
     GA_TRACKING_ID: process.env.GA_TRACKING_ID,
   },
+  plugins: [
+    "plugins/sanity.js",
+    "plugins/analytics.js",
+    // "plugins/vue-zoomer.js",
+    "plugins/vuelidate.js"
+  ],
   components: true,
+  pageTransition: {
+    name: 'view'
+  },
   webfonts: {
     google: {
       families: [

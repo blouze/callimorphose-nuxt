@@ -8,10 +8,10 @@
 
     <template slot="end">
       <b-navbar-item
-        v-for="{ _id, slug, title } in categories"
+        v-for="{ _id, name, title } in categories"
         :key="_id"
         tag="nuxt-link"
-        :to="{ name: 'category', params: { category: slug } }"
+        :to="{ name }"
       >
         {{ title }}
       </b-navbar-item>
@@ -29,14 +29,17 @@
 export default {
   props: {
     fixed: { type: Boolean, default: false },
-    type: { type: String, default: "is-secondary" },
+    type: { type: String, default: "is-white" },
   },
   // async fetch() {
   //   const { categories } = await this.$sanity.fetch(query)
   //   this.categories = categories
   // },
   data: () => ({
-    categories: [],
+    categories: [
+      { name: "ecritures", title: "écritures" },
+      // { name: "realisations", title: "réalisations" },
+    ],
   }),
   computed: {
     siteName() {

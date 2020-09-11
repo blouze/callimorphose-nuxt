@@ -3,11 +3,13 @@
     "@fortawesome/free-solid-svg-icons": "5.14.0",
     "@sanity/client": "1.150.7",
     "@sanity/image-url": "0.140.19",
+    "groq": "1.150.1",
     "nuxt": "2.14.5",
     "nuxt-buefy": "0.4.3",
     "nuxt-fontawesome": "0.4.0",
     "nuxt-stack": "0.8.1",
-    "vue-template-compiler": "2.6.12"
+    "vue-template-compiler": "2.6.12",
+    "vuelidate": "0.7.5"
   },
   "scripts": {
     "dev": "nuxt",
