@@ -1,168 +1,56 @@
-import { createApolloFetch } from 'apollo-fetch'
-require('dotenv').config()
-
-const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
-  router: {
-    base: 'callimorphose-nuxt'
-  }
-} : {}
-
 export default {
-  mode: 'universal',
-  ...routerBase,
-  env: {
-    backendURL: process.env.BACKEND_URL || 'https://callimorphose.ew.r.appspot.com',
-    emailAdress: process.env.EMAIL_ADRESS || 'bonjour@callimorphose.com',
-    instagramURL: process.env.INSTAGRAM_URL || 'https://www.instagram.com/callimorphose',
-    videoURL: process.env.VIDEO_URL || 'https://storage.googleapis.com/callimorphose.appspot.com/FREAKSHOW.mp4'
+  srcDir: "src",
+  modules: ["nuxt-stack", "nuxt-buefy", "nuxt-fontawesome"],
+  styles: ["styles/index.scss"],
+  styleResources: {
+    scss: ["styles/theme.scss", "styles/variables.scss"]
   },
-  /*
-  ** Headers of the page
-  */
-  head: {
-    htmlAttrs: {
-      lang: 'fr'
-    },
-    title: process.env.npm_package_name || '',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
-    ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Cinzel&family=Nunito&display=swap' },
-      { rel: 'preconnect', href: 'https://storage.googleapis.com', crossorigin: true }
+  stack: {
+    name: "Callimorphose",
+    host: "https://callimorphose.com",
+    description: "Callimorphose - atelier de calligraphie, Paris",
+    keywords: ["Céline Renaudie", "calligraphie", "calligraphe", "atelier"],
+    backgroundColor: "#FFFFFF",
+    themeColor: "#363636",
+    preconnect: [
+      "https://fonts.gstatic.com",
+      "https://fonts.googleapis.com",
+      "https://cdn.jsdelivr.net"
     ]
   },
-  /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#fff' },
-  /*
-  ** Global CSS
-  */
-  css: [
-    { src: '~assets/css/main.scss', lang: 'scss' }
-  ],
-  /*
-  ** Plugins to load before mounting the App
-  */
-  plugins: [
-    { src: '~plugins/helpers' },
-    { src: '~plugins/vuelidate' },
-    { src: '~plugins/vue-gallery.js', mode: 'client' },
-    { src: '~plugins/vue-cookie-law.js', mode: 'client' },
-    { src: '~plugins/v-body-scroll-lock.js', mode: 'client' },
-    { src: '~plugins/vue-lazyload.js', mode: 'client' }
-  ],
-  /*
-  ** Nuxt.js dev-modules
-  */
-  buildModules: [
-    // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module',
-    '@nuxtjs/fontawesome',
-    ['@nuxtjs/google-analytics', {
-      id: 'UA-51815367-6',
-      dev: false
-    }]
-  ],
-  /*
-  ** Nuxt.js modules
-  */
-  modules: [
-    // Doc: https://github.com/nuxt-community/modules/tree/master/packages/bulma
-    // '@nuxtjs/bulma',
-    // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
-    // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv',
-    '@nuxtjs/apollo',
-    '@nuxtjs/svg',
-    '@nuxtjs/sitemap',
-    '@nuxtjs/robots'
-  ],
-  apollo: {
-    clientConfigs: {
-      default: {
-        httpEndpoint: `${process.env.BACKEND_URL}/graphql`
-      }
-    },
-    includeNodeModules: true
+  env: {
+    baseURL: process.env.NODE_ENV !== 'production' ? 'http://localhost:5000' : 'https://callimorphose.com',
+    siteName: 'Callimorphose',
+    siteAuthor: 'DISPLAY JERKY',
+    SANITY_PROJECT_ID: process.env.SANITY_PROJECT_ID,
+    SANITY_DATASET: process.env.SANITY_DATASET,
+    GA_TRACKING_ID: process.env.GA_TRACKING_ID,
   },
-  /*
-  ** Axios module configuration
-  ** See https://axios.nuxtjs.org/options
-  */
-  axios: {
+  components: true,
+  webfonts: {
+    google: {
+      families: [
+        "Cinzel",
+        "Nunito",
+      ]
+    }
   },
-  /*
-  ** Build configuration
-  */
+  buefy: {
+    css: false,
+    materialDesignIcons: false,
+    defaultIconPack: 'fas',
+    defaultIconComponent: 'font-awesome-icon',
+    defaultFieldLabelPosition: 'on-border'
+  },
   fontawesome: {
-    icons: {
-      solid: ['faEnvelope', 'faExclamationTriangle'],
-      brands: ['faInstagram']
-    }
-  },
-  sitemap: {
-    hostname: 'https://callimorphose.com',
-    exclude: ['/contact/merci'],
-    defaults: {
-      lastmod: new Date()
-    }
-  },
-  build: {
-    postcss: {
-      preset: {
-        features: {
-          customProperties: false
-        }
-      }
-    },
-    babel: {
-      presets ({ isServer }) {
-        return [
-          [
-            require.resolve('@nuxt/babel-preset-app'),
-            // require.resolve('@nuxt/babel-preset-app-edge'), // For nuxt-edge users
-            {
-              buildTarget: isServer ? 'server' : 'client',
-              corejs: { version: 3 }
-            }
-          ]
+    imports: [
+      {
+        set: '@fortawesome/free-solid-svg-icons', // Solid icons
+        icons: [
+          'faEnvelope', 'faUser',
+          'faExclamationCircle'
         ]
-      }
-    },
-    /*
-    ** You can extend webpack config here
-    */
-    extend (config, ctx) {
-      config.resolve.alias.vue = 'vue/dist/vue.common'
-    }
+      },
+    ]
   },
-  transition: {
-    name: 'view'
-  },
-  generate: {
-    fallback: true,
-    routes () {
-      const uri = `${process.env.BACKEND_URL}/graphql`
-      const apolloFetch = createApolloFetch({ uri })
-      const query = `query Ecritures {
-        ecritures {
-          id, slug
-        }
-      }`
-      return apolloFetch({ query }).then(({ data }) => {
-        return data.ecritures.map(ecriture => `ecritures/${ecriture.slug}`)
-      }).catch((error) => {
-        console.log(error)
-      })
-    }
-  },
-  serverMiddleware: [
-    '~serverMiddleware/seo.js'
-  ]
 }

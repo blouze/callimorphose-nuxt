@@ -1,6 +1,0 @@
-query Realisations {
-  realisations (sort: "date:desc") {
-    id, title, date,
-    images { id, formats }
-  }
-}

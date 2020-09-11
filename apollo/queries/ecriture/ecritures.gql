@@ -1,6 +1,0 @@
-query Ecritures {
-  ecritures (sort: "priority:asc") {
-    id, name, slug,
-    image { id, formats }
-  }
-}

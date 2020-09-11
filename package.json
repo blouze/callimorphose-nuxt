@@ -1,53 +1,47 @@
 {
-  "name": "callimorphose",
-  "version": "1.0.0",
-  "description": "Callimorphose, atelier de calligraphie latine, Paris.",
-  "author": "Blaise",
-  "private": true,
+  "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "5.14.0",
+    "@sanity/client": "1.150.7",
+    "@sanity/image-url": "0.140.19",
+    "nuxt": "2.14.5",
+    "nuxt-buefy": "0.4.3",
+    "nuxt-fontawesome": "0.4.0",
+    "nuxt-stack": "0.8.1",
+    "vue-template-compiler": "2.6.12"
+  },
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt build",
+    "clean": "nuxt clean",
+    "serve": "nuxt serve",
     "start": "nuxt start",
-    "generate": "nuxt generate",
-    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "build:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt build",
-    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate"
+    "stats": "nuxt stats",
+    "build": "nuxt build --modern=server",
+    "generate": "nuxt generate --modern=client",
+    "format": "nuxt format --write --lint '*.{md}' 'src/**/*.{js,json,scss,vue}'",
+    "lint": "nuxt lint . --fix",
+    "test": "nuxt test",
+    "commit": "commit"
   },
-  "dependencies": {
-    "@nuxtjs/apollo": "4.0.1-rc.1",
-    "@nuxtjs/axios": "^5.3.6",
-    "@nuxtjs/bulma": "^1.2.1",
-    "@nuxtjs/dotenv": "^1.4.0",
-    "@nuxtjs/robots": "2.4.2",
-    "@nuxtjs/sitemap": "2.3.1",
-    "date-fns": "2.14.0",
-    "graphql-tag": "2.10.3",
-    "nuxt": "^2.0.0",
-    "v-body-scroll-lock": "1.1.3",
-    "vue-cookie-law": "1.13.3",
-    "vue-gallery": "2.0.1",
-    "vue-lazyload": "1.3.3",
-    "vuelidate": "0.7.5"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   },
-  "devDependencies": {
-    "@babel/runtime-corejs3": "7.9.6",
-    "@fortawesome/free-brands-svg-icons": "5.13.0",
-    "@fortawesome/free-regular-svg-icons": "5.13.0",
-    "@fortawesome/free-solid-svg-icons": "5.13.0",
-    "@nuxtjs/eslint-config": "^2.0.0",
-    "@nuxtjs/eslint-module": "^1.0.0",
-    "@nuxtjs/fontawesome": "1.1.2",
-    "@nuxtjs/google-analytics": "2.3.0",
-    "@nuxtjs/svg": "0.1.11",
-    "apollo-fetch": "0.7.0",
-    "babel-eslint": "^10.0.1",
-    "core-js": "3",
-    "eslint": "^6.1.0",
-    "eslint-plugin-nuxt": ">=0.4.2",
-    "node-sass": "4.14.1",
-    "sass-loader": "8.0.2",
-    "stylus": "0.54.7",
-    "stylus-loader": "3.0.2"
+  "lint-staged": {
+    "src/**/*.{js,vue}": [
+      "nuxt format --write --lint",
+      "nuxt lint --fix",
+      "nuxt test --related",
+      "git add"
+    ],
+    "src/**/*.{html,json,scss}": [
+      "nuxt format --write",
+      "git add"
+    ],
+    "*.{md}": [
+      "nuxt format --write",
+      "git add"
+    ]
   }
 }

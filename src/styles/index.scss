@@ -1,0 +1,59 @@
+// Equal vertical and horizontal column gap
+.columns.is-variable .column {
+  padding: var(--columnGap);
+}
+
+// Page transition
+$animLen: 0.2s;
+.view-enter-active {
+  transition: opacity $animLen ease-out, transform $animLen ease;
+}
+.view-leave-active {
+  transition: opacity $animLen ease-in, transform $animLen ease;
+}
+.view-enter-active {
+  transition-delay: $animLen;
+}
+.view-enter, .view-leave-to {
+  opacity: 0;
+}
+.view-enter-to, .view-leave {
+  opacity: 1;
+}
+
+// Lazyloaded images fade-in
+img.lazyloaded {
+  opacity: 0;
+  animation-name: fadein;
+  animation-duration: .5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+  animation-timing-function: ease-out;
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+// full height background image hero
+.hero {
+  &.has-background {
+    position: relative;
+    overflow: hidden;
+  }
+  &-background {
+    position: absolute;
+    object-fit: cover;
+    object-position: center center;
+    width: 100%;
+    height: 100%;
+    &.is-transparent {
+      opacity: 0.3;
+    }
+  }
+}

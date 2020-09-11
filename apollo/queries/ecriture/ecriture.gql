@@ -1,9 +1,0 @@
-query Ecriture ($slug: String!) {
-  ecritureBySlug (slug: $slug) {
-    id, name, description, priority, slug,
-    image { id, formats },
-    reals { id, formats },
-    prev { id, name, slug },
-    next { id, name, slug }
-  }
-}

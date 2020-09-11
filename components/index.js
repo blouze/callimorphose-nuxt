@@ -1,6 +1,0 @@
-export { default as Header } from './Header'
-export { default as Footer } from './Footer'
-export { default as DotLeader } from './DotLeader'
-export { default as EcrituresList } from './EcrituresList'
-export { default as ContactForm } from './ContactForm'
-export { default as Loader } from './Loader'

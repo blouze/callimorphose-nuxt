@@ -1,0 +1,48 @@
+// Import Bulma's core
+@import "~bulma/sass/utilities/_all";
+
+// Set your colors
+$black: #3d2c2e;
+$white: $light;
+
+$primary: #424C55;
+$primary-invert: findColorInvert($primary);
+$primary-light: #886F68;
+$primary-dark: findColorDark($primary-light);
+
+$secondary: #D1CCDC;
+$secondary-invert: findColorInvert($secondary);
+$secondary-light: findColorLight($secondary);
+$secondary-dark: findColorDark($secondary);
+
+// Setup $colors to use as bulma classes (e.g. 'is-twitter')
+$colors: mergeColorMaps($colors, (
+  "white": ($white, $black),
+  "black": ($black, $white),
+  "primary": ($primary, $primary-invert, $primary-light, $primary-dark),
+  "secondary": ($secondary, $secondary-invert, $secondary-light, $secondary-dark),
+  "link": ($secondary, $secondary-invert, $secondary-light, $secondary-dark),
+));
+
+// Links
+// $link: $secondary;
+// $link-invert: $secondary-invert;
+// $link-focus-border: $secondary;
+
+$family-sans-serif: "Heebo";
+$family-primary: $family-sans-serif, sans-serif;
+
+$scheme-main: $white;
+$text: $black;
+$body-weight: 400;
+
+$footer-background-color: $primary;
+$footer-color: $primary-invert;
+
+$modal-background-background-color: bulmaRgba($primary, 0.92);
+$snackbar-background-color: $primary;
+$snackbar-color: $white;
+
+// Import Bulma and Buefy styles
+@import "~bulma";
+@import "~buefy/src/scss/buefy";
