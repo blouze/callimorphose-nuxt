@@ -11,8 +11,8 @@
       <nuxt-link
         v-for="{ id, name, image, slug } in ecritures"
         :key="id"
-        class="column is-half ecriture"
-        :to="{ name: 'ecritures-slug', params: { slug } }"
+        class="column is-half"
+        :to="localeRoute({ name: 'ecritures-slug', params: { slug } })"
       >
         <div class="card">
           <div class="card-image">
@@ -27,7 +27,7 @@
             </figure>
           </div>
           <div class="card-content">
-            <h4 class="subtitle is-4 has-text-centered">
+            <h4 class="title is-4 has-text-centered">
               {{ name }}
             </h4>
           </div>
@@ -48,5 +48,10 @@ export default {
   data: () => ({
     ecritures: [],
   }),
+  head() {
+    return {
+      title: "écritures",
+    }
+  },
 }
 </script>

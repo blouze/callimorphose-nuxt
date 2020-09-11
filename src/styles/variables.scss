@@ -8,7 +8,7 @@ $paper: #FBFBF8;
 
 $primary: #c46258;
 $primary-invert: findColorInvert($primary);
-$primary-light: #886F68;
+$primary-light: findColorLight($primary);
 $primary-dark: findColorDark($primary-light);
 
 $secondary: #D1CCDC;
@@ -26,7 +26,6 @@ $colors: mergeColorMaps($colors, (
 ));
 
 // Links
-$link: $primary !default;
 $link: $primary;
 $link-invert: $primary-invert;
 $link-focus-border: $primary;
@@ -39,8 +38,7 @@ $scheme-main: $paper;
 $text: $black;
 $body-weight: 400;
 
-$footer-background-color: $black;
-$footer-color: $paper;
+$footer-background-color: $white-bis;
 
 $modal-background-background-color: bulmaRgba($primary, 0.92);
 $snackbar-background-color: $primary;
@@ -53,4 +51,9 @@ $snackbar-color: $white;
 .title {
   font-family: $family-serif;
   font-weight: normal;
+  word-break: normal;
+}
+
+:focus {
+  outline-style: none;
 }

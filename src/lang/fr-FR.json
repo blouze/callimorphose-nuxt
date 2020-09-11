@@ -1,0 +1,10 @@
+{
+  "contact": {
+    "fields": {
+      "email": "email",
+      "first_name": "prénom",
+      "last_name": "nom",
+      "message": "message"
+    }
+  }
+}

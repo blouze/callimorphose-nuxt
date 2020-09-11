@@ -1,11 +1,7 @@
 <template>
   <div>
-    <navbar :fixed="hasFixedNavbar" />
-    <div
-      class="container"
-      style="min-height: 100vh;"
-      :class="{ 'has-navbar-fixed-top': hasFixedNavbar }"
-    >
+    <navbar fixed />
+    <div class="container" style="min-height: 90vh; margin-top: 4rem;">
       <nuxt />
     </div>
     <page-footer />
@@ -14,14 +10,17 @@
 
 <script>
 export default {
-  data: () => ({
-    hasFixedNavbar: true,
-  }),
   head() {
-    return {
-      title: null,
-      titleTemplate: `%s | ${process.env.siteName}`,
-    }
+    return this.$route.path !== this.localePath("index")
+      ? {
+          title: null,
+          titleTemplate: `%s — ${process.env.siteName}`,
+          bodyAttrs: { class: "has-navbar-fixed-top" },
+        }
+      : {
+          title: process.env.siteName,
+          bodyAttrs: { class: "has-navbar-fixed-top" },
+        }
   },
 }
 </script>
