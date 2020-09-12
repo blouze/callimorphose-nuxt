@@ -27,6 +27,7 @@ $colors: mergeColorMaps($colors, (
 
 // Links
 $link: $primary;
+$link-active: $primary;
 $link-invert: $primary-invert;
 $link-focus-border: $primary;
 
@@ -38,7 +39,7 @@ $scheme-main: $paper;
 $text: $black;
 $body-weight: 400;
 
-$footer-background-color: $white-bis;
+$footer-background-color: $white-ter;
 
 $modal-background-background-color: bulmaRgba($primary, 0.92);
 $snackbar-background-color: $primary;
@@ -48,6 +49,10 @@ $snackbar-color: $white;
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
 
+.link-active {
+  color: $link-active;
+}
+
 .title {
   font-family: $family-serif;
   font-weight: normal;
@@ -56,4 +61,8 @@ $snackbar-color: $white;
 
 :focus {
   outline-style: none;
+}
+
+.input, .textarea {
+  background-color: white;
 }

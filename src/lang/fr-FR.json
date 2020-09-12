@@ -6,5 +6,11 @@
       "last_name": "nom",
       "message": "message"
     }
+  },
+  "form": {
+    "validation": {
+      "required": "Champ obligatoire",
+      "isEmail": "Email invalide"
+    }
   }
 }

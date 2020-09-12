@@ -22,12 +22,12 @@
 
     <template slot="end">
       <b-navbar-item
-        v-for="({ name, title }, index) in links"
+        v-for="({ name, slug }, index) in links"
         :key="index"
         tag="nuxt-link"
-        :to="localeRoute({ name })"
+        :to="localeRoute({ name: slug })"
       >
-        {{ title }}
+        {{ name }}
       </b-navbar-item>
     </template>
   </b-navbar>
@@ -35,25 +35,29 @@
 
 <script>
 import Logo from "~/assets/CALLIMORPHOSE.svg"
-// import query from "~/groq/queries/categories"
+import query from "~/groq/queries/pages"
 
 export default {
   components: { Logo },
   props: {
     fixed: { type: Boolean, default: false },
-    type: { type: String, default: "is-white" },
+    type: { type: String, default: "has-background-white" },
+  },
+  async fetch() {
+    this.pages = await this.$sanity.fetch(query)
   },
   data: () => ({
-    links: [
-      { name: "ecritures", title: "écritures" },
-      { name: "realisations", title: "réalisations" },
-      { name: "contact", title: "contact" },
-    ],
+    pages: [],
     dense: false,
     isMenuOpen: false,
     isScrollEnd: false,
   }),
   computed: {
+    links() {
+      return this.pages
+        .filter(({ slug }) => slug !== "index")
+        .concat([{ name: "contact", slug: "contact" }])
+    },
     siteName() {
       return process.env.siteName
     },
@@ -77,9 +81,9 @@ export default {
   },
   methods: {
     handleScroll() {
-      this.dense = window.scrollY > 300
+      this.dense = window.scrollY > 200
       this.isScrollEnd =
-        window.innerHeight + window.scrollY >= document.body.offsetHeight - 100
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 200
     },
   },
 }

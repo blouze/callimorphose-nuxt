@@ -35,12 +35,13 @@ ul.leaders li:after
   content: buf
 
 ul.leaders span:first-child
-  padding-right: 0.33em
+  // padding-right: 0.33em
   background: #FBFBF8
 
 ul.leaders span + span
   float: right
   padding-left: 0.33em
+  padding-bottom: 1px
   position: relative
   z-index: 1
   background: #FBFBF8

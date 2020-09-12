@@ -30,25 +30,15 @@
         :validation="$v.message"
       />
 
-      <div class="field is-horizontal">
-        <div class="field-label is-normal" />
-        <div class="field-body">
-          <div class="field">
-            <div class="control">
-              <label class="checkbox">
-                <input v-model="consent" type="checkbox" />
-                J'ai connaissance de la
-                <nuxt-link to="">politique de confidentialité</nuxt-link>.
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
+      <b-checkbox v-model="consent">
+        J'ai connaissance de la
+        <nuxt-link to="">politique de confidentialité</nuxt-link>.
+      </b-checkbox>
 
       <div class="field is-grouped is-grouped-right">
         <div class="control">
           <button
-            class="button is-link"
+            class="button is-primary"
             :disabled="$v.$invalid || !consent"
             :class="{ 'is-loading': loading }"
           >

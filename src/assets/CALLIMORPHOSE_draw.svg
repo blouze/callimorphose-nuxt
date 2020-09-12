@@ -65,7 +65,6 @@
     <style>
         .cm-path {
             fill: none;
-            stroke: #923828;
             stroke-dasharray:1400 4000;
             stroke-dashoffset:1400;
             stroke-linecap: round;
@@ -75,25 +74,25 @@
         }
 
         .cm-path--c-1 { animation-delay: 0.0s; stroke: #c46258; }
-        .cm-path--a-1-a { animation-delay: 1.0s; }
-        .cm-path--a-1-b { animation-delay: 1.5s; }
-        .cm-path--l-1 { animation-delay: 2.0s; }
-        .cm-path--l-2 { animation-delay: 2.7s; }
-        .cm-path--i-1-a { animation-delay: 3.3s; }
-        .cm-path--m-1 { animation-delay: 3.8s; }
-        .cm-path--o-1 { animation-delay: 4.7s; }
-        .cm-path--r-1 { animation-delay: 5.2s; }
-        .cm-path--p-1-a { animation-delay: 5.8s; }
-        .cm-path--h-1-a { animation-delay: 6.2s; }
-        .cm-path--h-1-b { animation-delay: 6.7s; }
-        .cm-path--h-1-c { animation-delay: 7.3s; }
-        .cm-path--o-2 { animation-delay: 7.8s; }
-        .cm-path--s-1-a { animation-delay: 8.4s; }
-        .cm-path--s-1-b { animation-delay: 8.8s; }
+        .cm-path--a-1-a { animation-delay: 1.0s; stroke: #923828; }
+        .cm-path--a-1-b { animation-delay: 1.5s; stroke: #923828; }
+        .cm-path--l-1 { animation-delay: 2.0s; stroke: #923828; }
+        .cm-path--l-2 { animation-delay: 2.7s; stroke: #923828; }
+        .cm-path--i-1-a { animation-delay: 3.3s; stroke: #923828; }
+        .cm-path--m-1 { animation-delay: 3.8s; stroke: #923828; }
+        .cm-path--o-1 { animation-delay: 4.7s; stroke: #923828; }
+        .cm-path--r-1 { animation-delay: 5.2s; stroke: #923828; }
+        .cm-path--p-1-a { animation-delay: 5.8s; stroke: #923828; }
+        .cm-path--h-1-a { animation-delay: 6.2s; stroke: #923828; }
+        .cm-path--h-1-b { animation-delay: 6.7s; stroke: #923828; }
+        .cm-path--h-1-c { animation-delay: 7.3s; stroke: #923828; }
+        .cm-path--o-2 { animation-delay: 7.8s; stroke: #923828; }
+        .cm-path--s-1-a { animation-delay: 8.4s; stroke: #923828; }
+        .cm-path--s-1-b { animation-delay: 8.8s; stroke: #923828; }
         .cm-path--e-1 { animation-delay: 9.2s; stroke: #c46258; }
         .cm-path--p-1-b { animation-delay: 10.0s; stroke: #c46258; }
         .cm-path--p-1-c { animation-delay: 11.1s; stroke: #c46258; animation-timing-function: ease-out; }
-        .cm-path--i-1-b { animation-delay: 11.8s; }
+        .cm-path--i-1-b { animation-delay: 11.8s; stroke: #923828; }
 
         @keyframes letter-animation {
             0% {

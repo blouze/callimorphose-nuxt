@@ -8,7 +8,8 @@
     <b-input
       v-model="validation.$model"
       :name="name"
-      :type="password ? 'password' : 'input'"
+      :type="type"
+      :placeholder="placeholder"
       :icon="icon"
     />
   </b-field>
@@ -30,9 +31,9 @@ export default {
       type: String,
       default: null,
     },
-    password: {
-      type: Boolean,
-      default: false,
+    type: {
+      type: String,
+      default: "input",
     },
     icon: {
       type: String,
