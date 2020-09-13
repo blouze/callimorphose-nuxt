@@ -9,7 +9,7 @@
       class="column is-half"
       :to="localeRoute({ name: 'ecritures-slug', params: { slug } })"
     >
-      <div class="card">
+      <div class="card has-background-white">
         <div class="card-image">
           <figure v-if="image" class="image is-4by3">
             <sanity-image
@@ -17,7 +17,6 @@
               :alt="name"
               :width="image.dimensions.width"
               :height="image.dimensions.height"
-              :size-factor="0.8"
             />
           </figure>
         </div>

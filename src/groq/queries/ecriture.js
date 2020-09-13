@@ -8,11 +8,15 @@ export default groq`
     asset,
     "dimensions": asset->metadata.dimensions
   },
-  "realisations": *[_type == "realisation" && ^._id in ecritures[]._ref] {
+  "realisations": *[_type == "realisation" && ^._id in ecritures[]._ref] | order(date desc) {
     _id, title,
     "images": images[] {
       asset,
       "dimensions": asset->metadata.dimensions
     }
+  },
+  "ecritures": *[_type == "ecriture"] {
+    _id, name,
+    "slug": slug.current,
   }
 }[0]`

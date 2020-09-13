@@ -12,10 +12,10 @@
       </DotLeader>
 
       <div class="columns">
-        <div class="column is-two-thirds-desktop">
-          <div class="card">
+        <div class="column is-full is-two-thirds-desktop">
+          <div class="card has-background-white">
             <div class="card-image">
-              <figure class="image">
+              <figure class="image is-4by3">
                 <sanity-image
                   :image="ecriture.image.asset"
                   :alt="ecriture.name"
@@ -25,70 +25,15 @@
               </figure>
             </div>
             <div class="card-content is-hidden-desktop">
-              <h2 class="title is-3">
-                <DotLeader>
-                  <template v-slot:end>
-                    <span>{{ ecriture.name }} </span>
-                  </template>
-                </DotLeader>
-              </h2>
+              <h2 class="title is-3 has-text-centered">{{ ecriture.name }}</h2>
             </div>
           </div>
         </div>
 
-        <div class="column">
-          <div class="level is-mobile">
-            <div class="level-left">
-              <nuxt-link
-                v-if="prev"
-                class="title is-5"
-                :to="
-                  localeRoute({
-                    name: 'ecritures-slug',
-                    params: { slug: prev.slug },
-                  })
-                "
-              >
-                &#x2190;&nbsp;{{ prev.name }}
-              </nuxt-link>
-            </div>
-            <div class="level-right">
-              <nuxt-link
-                v-if="next"
-                class="title is-5"
-                :to="
-                  localeRoute({
-                    name: 'ecritures-slug',
-                    params: { slug: next.slug },
-                  })
-                "
-              >
-                {{ next.name }}&nbsp;&#x2192;
-                <div />
-              </nuxt-link>
-            </div>
-          </div>
-
-          <div
-            class="column columns is-mobile is-multiline"
-            style="margin-top: auto;"
-          >
-            <p class="column is-full">{{ ecriture.description }}</p>
-            <div
-              v-for="(image, i) in realisationsImages"
-              :key="i"
-              class="column is-half"
-            >
-              <figure class="image" @click="index = i + 1">
-                <sanity-image
-                  :image="image.asset"
-                  :alt="image.name"
-                  :width="image.dimensions.width"
-                  :height="image.dimensions.height"
-                />
-              </figure>
-            </div>
-          </div>
+        <div class="column" style="margin-top: auto;">
+          <p class="content">{{ ecriture.description }}</p>
+          <ecriture-realisations-gallery :images="realisationsImages" />
+          <ecriture-nav :prev="prev" :next="next" />
         </div>
       </div>
     </div>
@@ -109,10 +54,24 @@ export default {
   }),
   computed: {
     prev() {
-      return this.ecriture
+      if (!this.ecriture) return null
+      const nbEcritures = this.ecriture.ecritures.length
+      const currentIndex = this.ecriture.ecritures.findIndex(
+        ({ slug }) => slug === this.ecriture.slug
+      )
+      return this.ecriture.ecritures[
+        (currentIndex - 1 + nbEcritures) % nbEcritures
+      ]
     },
     next() {
-      return this.ecriture
+      if (!this.ecriture) return null
+      const nbEcritures = this.ecriture.ecritures.length
+      const currentIndex = this.ecriture.ecritures.findIndex(
+        ({ slug }) => slug === this.ecriture.slug
+      )
+      return this.ecriture.ecritures[
+        (currentIndex + 1 + nbEcritures) % nbEcritures
+      ]
     },
     realisationsImages() {
       return this.ecriture && this.ecriture.realisations
