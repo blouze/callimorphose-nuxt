@@ -8,14 +8,14 @@
         <figure
           class="image"
           :style="{
-            width: dense || isIndex ? '60%' : '80%',
+            width: dense || isIndex ? '60%' : '90%',
             margin: 'auto',
           }"
           :class="{
             hidden: (!dense && isIndex) || isScrollEnd,
           }"
         >
-          <Logo style="width: 100%; height: 100%;" />
+          <Logo style="width: 80%; height: auto;" />
         </figure>
       </b-navbar-item>
     </template>

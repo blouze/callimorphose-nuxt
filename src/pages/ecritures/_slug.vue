@@ -15,7 +15,10 @@
         <div class="column is-full is-two-thirds-desktop">
           <div class="card has-background-white">
             <div class="card-image">
-              <figure class="image is-4by3">
+              <figure
+                class="image is-4by3"
+                @click="(index) => (galleryIndex = 0)"
+              >
                 <sanity-image
                   :image="ecriture.image.asset"
                   :alt="ecriture.name"
@@ -25,18 +28,29 @@
               </figure>
             </div>
             <div class="card-content is-hidden-desktop">
-              <h2 class="title is-3 has-text-centered">{{ ecriture.name }}</h2>
+              <h2 class="title is-4 has-text-centered">{{ ecriture.name }}</h2>
             </div>
           </div>
         </div>
 
         <div class="column" style="margin-top: auto;">
           <p class="content">{{ ecriture.description }}</p>
-          <ecriture-realisations-gallery :images="realisationsImages" />
+          <ecriture-realisations-gallery
+            :images="realisationsImages"
+            @click="(index) => (galleryIndex = index + 1)"
+          />
           <ecriture-nav :prev="prev" :next="next" />
         </div>
       </div>
     </div>
+
+    <client-only>
+      <v-gallery
+        :images="galleryImages"
+        :index="galleryIndex"
+        @close="galleryIndex = null"
+      />
+    </client-only>
   </section>
 </template>
 
@@ -51,8 +65,31 @@ export default {
   },
   data: () => ({
     ecriture: null,
+    galleryIndex: null,
   }),
   computed: {
+    galleryImages() {
+      return (
+        this.ecriture &&
+        [this.ecriture.image]
+          .concat(this.realisationsImages)
+          .map((image) => this.$imgBuilder.image(image).width(1024).url())
+      )
+    },
+    realisationsImages() {
+      return this.ecriture && this.ecriture.realisations
+        ? this.ecriture.realisations.reduce((acc, cur) => {
+            return acc.concat(
+              cur.images.map((image) => {
+                return {
+                  ...image,
+                  name: cur.title,
+                }
+              })
+            )
+          }, [])
+        : []
+    },
     prev() {
       if (!this.ecriture) return null
       const nbEcritures = this.ecriture.ecritures.length
@@ -72,20 +109,6 @@ export default {
       return this.ecriture.ecritures[
         (currentIndex + 1 + nbEcritures) % nbEcritures
       ]
-    },
-    realisationsImages() {
-      return this.ecriture && this.ecriture.realisations
-        ? this.ecriture.realisations.reduce((acc, cur) => {
-            return acc.concat(
-              cur.images.map((image) => {
-                return {
-                  ...image,
-                  name: cur.title,
-                }
-              })
-            )
-          }, [])
-        : []
     },
   },
   head() {

@@ -37,3 +37,14 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+a {
+  & h4.title {
+    color: $link;
+  }
+  &:hover h4.title {
+    color: $text;
+  }
+}
+</style>

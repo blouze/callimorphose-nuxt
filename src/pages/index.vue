@@ -1,7 +1,6 @@
 <template>
   <div>
-    <section class="hero is-fullheight">
-      <div class="hero-head" />
+    <section class="hero is-medium">
       <div class="hero-body">
         <div class="container">
           <div class="columns is-centered">
@@ -9,7 +8,7 @@
               <Animation style="width: 100%; height: auto;" />
             </div>
           </div>
-          <div class="hero-foot" style="margin-top: auto;">
+          <div class="hero-foot my-6">
             <figure class="has-text-centered">
               <Separator />
             </figure>

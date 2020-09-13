@@ -1,7 +1,7 @@
 <template>
   <div class="columns is-mobile is-multiline">
-    <div v-for="(image, i) in images" :key="i" class="column is-half">
-      <figure class="image" @click="index = i + 1">
+    <div v-for="(image, index) in images" :key="index" class="column is-half">
+      <figure class="image" @click="$emit('click', index)">
         <sanity-image
           :image="image.asset"
           :alt="image.name"

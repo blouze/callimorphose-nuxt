@@ -33,7 +33,7 @@ export default {
     "plugins/helpers",
     "plugins/sanity.js",
     "plugins/analytics.js",
-    // "plugins/vue-zoomer.js",
+    { src:"plugins/vue-gallery.js", mode: "client" },
     "plugins/vuelidate.js"
   ],
   components: true,

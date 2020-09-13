@@ -9,8 +9,8 @@
     </section>
 
     <section
-      v-for="{ id, title, date, images } in realisations"
-      :key="id"
+      v-for="{ _id, title, date, images } in realisations"
+      :key="_id"
       class="section"
     >
       <div class="container">
@@ -32,20 +32,27 @@
           >
             <figure
               class="gallery-item image"
-              @click="setGalleryId(id, imageIndex)"
+              @click="setGalleryId(_id, imageIndex)"
             >
               <sanity-image
                 :image="image.asset"
                 :alt="title"
                 :width="image.dimensions.width"
                 :height="image.dimensions.height"
-                :size-factor="0.8"
               />
             </figure>
           </div>
         </div>
       </div>
     </section>
+
+    <client-only>
+      <v-gallery
+        :images="galleryImages || []"
+        :index="imageIndex"
+        @close="setGalleryId(null, null)"
+      />
+    </client-only>
   </div>
 </template>
 
@@ -66,18 +73,19 @@ export default {
     galleryImages() {
       const realisation =
         this.realisations &&
-        this.realisations.find((r) => r.id === this.galleryId)
+        this.realisations.find((r) => r._id === this.galleryId)
 
       return (
         realisation &&
-        realisation.images.map(
-          (image) => this.getImageProps(image, "large").src
+        realisation.images.map((image) =>
+          this.$imgBuilder.image(image).width(1024).url()
         )
       )
     },
   },
   methods: {
     setGalleryId(id, index) {
+      console.log(id, index)
       this.galleryId = id
       this.imageIndex = index
     },
@@ -89,3 +97,8 @@ export default {
   },
 }
 </script>
+
+<style lang="stylus" scoped>
+.gallery-item
+  cursor: pointer
+</style>
