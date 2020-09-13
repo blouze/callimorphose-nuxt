@@ -2,8 +2,8 @@
   "contact": {
     "fields": {
       "email": "email",
-      "first_name": "prénom",
-      "last_name": "nom",
+      "nom": "nom",
+      "prenom": "prénom",
       "message": "message"
     }
   },

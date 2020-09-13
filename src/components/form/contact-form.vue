@@ -14,18 +14,19 @@
         icon="envelope"
         :validation="$v.email"
       />
+
       <form-input
-        name="first_name"
-        :label="$t('contact.fields.first_name')"
-        :placeholder="$t('contact.fields.first_name')"
-        :validation="$v.first_name"
+        name="nom"
+        :label="$t('contact.fields.nom')"
+        :placeholder="$t('contact.fields.nom')"
+        :validation="$v.nom"
       />
 
       <form-input
-        name="last_name"
-        :label="$t('contact.fields.last_name')"
-        :placeholder="$t('contact.fields.last_name')"
-        :validation="$v.last_name"
+        name="prenom"
+        :label="$t('contact.fields.prenom')"
+        :placeholder="$t('contact.fields.prenom')"
+        :validation="$v.prenom"
       />
 
       <form-input
@@ -69,16 +70,16 @@ export default {
 
   data: () => ({
     email: "",
-    first_name: "",
-    last_name: "",
+    nom: "",
+    prenom: "",
     message: "",
     consent: false,
   }),
 
   validations: {
     email: { required, isEmail },
-    first_name: { required },
-    last_name: { required },
+    nom: { required },
+    prenom: { required },
     message: {},
   },
 
@@ -87,8 +88,8 @@ export default {
       if (!this.$v.error) {
         this.$emit("submit", {
           email: this.$v.email.$model,
-          first_name: this.$v.first_name.$model,
-          last_name: this.$v.last_name.$model,
+          nom: this.$v.nom.$model,
+          prenom: this.$v.prenom.$model,
           message: this.$v.message.$model,
         })
       }

@@ -34,9 +34,11 @@
               </video>
             </figure>
           </client-only>
+
           <h3 class="title is-3">
             À propos
           </h3>
+
           <p class="content">
             Diplômée d'état en design objet, puis élève de Serge&nbsp;Cortesi et
             collaboratrice de

@@ -31,7 +31,7 @@
             class="column is-6"
           >
             <figure
-              class="gallery-item image"
+              class="clickable image"
               @click="setGalleryId(_id, imageIndex)"
             >
               <sanity-image
@@ -97,8 +97,3 @@ export default {
   },
 }
 </script>
-
-<style lang="stylus" scoped>
-.gallery-item
-  cursor: pointer
-</style>

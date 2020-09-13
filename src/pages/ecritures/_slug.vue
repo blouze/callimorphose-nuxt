@@ -16,14 +16,15 @@
           <div class="card has-background-white">
             <div class="card-image">
               <figure
-                class="image is-4by3"
+                class="clickable image is-4by3"
                 @click="(index) => (galleryIndex = 0)"
               >
                 <sanity-image
                   :image="ecriture.image.asset"
                   :alt="ecriture.name"
                   :width="ecriture.image.dimensions.width"
-                  :height="ecriture.image.dimensions.height"
+                  :height="(ecriture.image.dimensions.width * 3) / 4"
+                  fit="crop"
                 />
               </figure>
             </div>
