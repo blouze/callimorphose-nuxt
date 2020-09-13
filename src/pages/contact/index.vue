@@ -77,7 +77,7 @@ export default {
       this.formSubmitted = true
       this.$axios
         .post(
-          process.env.baseURL,
+          "/",
           this.encode({
             "form-name": "contact",
             ...params,
