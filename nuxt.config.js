@@ -15,8 +15,6 @@ export default {
     themeColor: "#363636",
     preconnect: [
       "https://fonts.gstatic.com",
-      "https://fonts.googleapis.com",
-      "https://cdn.jsdelivr.net"
     ]
   },
   env: {

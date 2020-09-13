@@ -16,7 +16,8 @@
               :image="image.asset"
               :alt="name"
               :width="image.dimensions.width"
-              :height="image.dimensions.height"
+              :height="(image.dimensions.width * 3) / 4"
+              fit="crop"
             />
           </figure>
         </div>

@@ -92,10 +92,6 @@ export default {
   list-style: none
   margin: 0
   border-left: 1px solid black
-  li
-    padding: 0 0.5rem
-    a
-      padding: 0.25rem
 
 .tile
   padding-bottom: 2rem
