@@ -1,3 +1,12 @@
+import ecrituresQuery from "./src/groq/queries/ecritures"
+import sanityClient from "@sanity/client"
+
+const sanity = sanityClient({
+  projectId: process.env.SANITY_PROJECT_ID,
+  dataset: process.env.SANITY_DATASET,
+  useCdn: true,
+})
+
 export default {
   srcDir: "src",
   modules: ["nuxt-stack", "nuxt-buefy", "nuxt-fontawesome", "nuxt-i18n"],
@@ -82,5 +91,16 @@ export default {
   },
   axios: {
     baseURL: "/"
-  }
+  },
+  sitemap: {
+    hostname: 'https://callimorphose.com',
+    exclude: ['/contact/merci'],
+    defaults: {
+      lastmod: new Date()
+    },
+    routes: async () => {
+      const ecritures = await sanity.fetch(ecrituresQuery)
+      return ecritures.map(({ slug }) => `/ecritures/${slug}`)
+    }
+  },
 }
