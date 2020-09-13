@@ -82,5 +82,7 @@ export default {
     lazy: true,
     langDir: 'lang/',
   },
-  axios: {}
+  axios: {
+    baseURL: "/"
+  }
 }
