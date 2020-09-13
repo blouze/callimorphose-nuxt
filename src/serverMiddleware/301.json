@@ -1,0 +1,4 @@
+[
+  { "from": "/a-propos", "to": "/contact" },
+  { "from": "/portfolio", "to": "/realisations" }
+]

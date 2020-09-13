@@ -26,6 +26,7 @@
     "stats": "nuxt stats",
     "build": "nuxt build --modern=server",
     "generate": "nuxt generate --modern=client",
+    "generate-noIndex": "nuxt generate --modern=client && echo 'User-agent: *\nDisallow: /' > dist/robots.txt",
     "format": "nuxt format --write --lint '*.{md}' 'src/**/*.{js,json,scss,vue}'",
     "lint": "nuxt lint . --fix",
     "test": "nuxt test",

@@ -66,18 +66,31 @@ export default {
     formError: null,
   }),
   methods: {
+    encode(data) {
+      return Object.keys(data)
+        .map(
+          (key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+        )
+        .join("&")
+    },
     onFormSubmit(params) {
       this.formSubmitted = true
-      this.$axios({
-        method: "post",
-        url: `${process.env.backendURL}/contact`,
-        data: params,
-      })
+      this.$axios
+        .post(
+          process.env.baseURL,
+          this.encode({
+            "form-name": "contact",
+            ...params,
+          }),
+          { header: { "Content-Type": "application/x-www-form-urlencoded" } }
+        )
         .then(({ data }) => {
-          this.$router.push({
-            name: "contact-merci",
-            params: { messageSent: true },
-          })
+          this.$router.push(
+            this.localeRoute({
+              name: "contact-merci",
+              params: { messageSent: true },
+            })
+          )
         })
         .catch((err) => {
           this.formError = err.response.data.message

@@ -1,5 +1,11 @@
 <template>
-  <form @submit="checkForm">
+  <form
+    name="contact"
+    method="post"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+    @submit.prevent="checkForm"
+  >
     <fieldset :disabled="disabled">
       <form-input
         name="email"
