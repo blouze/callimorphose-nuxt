@@ -22,5 +22,10 @@ export default {
       return redirect("/")
     }
   },
+  head() {
+    return {
+      title: "contact",
+    }
+  },
 }
 </script>
