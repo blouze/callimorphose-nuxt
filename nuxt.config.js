@@ -20,6 +20,7 @@ export default {
     ]
   },
   env: {
+    baseURL: process.env.URL || '/',
     siteName: 'Callimorphose, atelier de calligraphie',
     siteAuthor: 'DISPLAY JERKY',
     emailAdress: process.env.EMAIL_ADRESS || 'bonjour@callimorphose.com',
