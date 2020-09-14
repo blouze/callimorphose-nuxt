@@ -12,8 +12,8 @@
       </DotLeader>
 
       <div class="columns">
-        <div class="column is-full is-two-thirds-desktop">
-          <div class="card has-background-white">
+        <div class="column is-full is-three-fifths-desktop">
+          <div class="card has-background-white-ter">
             <div class="card-image">
               <figure
                 class="clickable image is-4by3"

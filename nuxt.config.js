@@ -32,6 +32,7 @@ export default {
     emailAdress: process.env.EMAIL_ADRESS || 'bonjour@callimorphose.com',
     instagramURL: process.env.INSTAGRAM_URL || 'https://www.instagram.com/callimorphose',
     videoURL: process.env.VIDEO_URL || 'https://storage.googleapis.com/callimorphose.appspot.com/FREAKSHOW.mp4',
+    videoPosterURL: process.env.VIDEO_POSTER_URL || 'https://storage.cloud.google.com/callimorphose.appspot.com/video-poster.jpg',
     SANITY_PROJECT_ID: process.env.SANITY_PROJECT_ID,
     SANITY_DATASET: process.env.SANITY_DATASET,
     GA_TRACKING_ID: process.env.GA_TRACKING_ID,

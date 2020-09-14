@@ -29,7 +29,15 @@
         <div class="column is-7">
           <client-only>
             <figure class="image content">
-              <video width="1280" height="720" playsinline autoplay muted loop>
+              <video
+                width="1280"
+                height="720"
+                playsinline
+                autoplay
+                muted
+                loop
+                :poster="videoPosterURL"
+              >
                 <source type="video/mp4" :src="videoURL" />
               </video>
             </figure>
@@ -63,6 +71,7 @@ export default {
   name: "ContactPage",
   data: () => ({
     videoURL: process.env.videoURL,
+    videoPosterURL: process.env.videoPosterURL,
     mdlcURL: "https://www.lamaisondelacalligraphie.com",
     formSubmitted: false,
     formError: null,

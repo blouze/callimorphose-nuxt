@@ -9,7 +9,6 @@
           class="image"
           :style="{
             width: dense || isIndex ? '60%' : '90%',
-            margin: 'auto',
           }"
           :class="{
             hidden: (!dense && isIndex) || isScrollEnd,

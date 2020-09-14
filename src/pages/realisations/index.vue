@@ -85,7 +85,6 @@ export default {
   },
   methods: {
     setGalleryId(id, index) {
-      console.log(id, index)
       this.galleryId = id
       this.imageIndex = index
     },

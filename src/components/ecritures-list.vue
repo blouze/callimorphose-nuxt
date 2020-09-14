@@ -10,7 +10,7 @@
       :to="localeRoute({ name: 'ecritures-slug', params: { slug } })"
     >
       <div class="card has-background-white">
-        <div class="card-image">
+        <div class="card-image has-background-white-ter">
           <figure v-if="image" class="image is-4by3">
             <sanity-image
               :image="image.asset"

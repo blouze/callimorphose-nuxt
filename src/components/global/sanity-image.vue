@@ -6,7 +6,7 @@
       :media="`(max-width: ${media}px)`"
       :data-srcset="getSrcSet(w * sizeFactor)"
     />
-
+    <b-loading v-model="lazyloading" :is-full-page="false" />
     <img
       class="lazyload"
       :alt="alt"
@@ -63,6 +63,9 @@ export default {
       default: "FFFFFF",
     },
   },
+  data: () => ({
+    lazyloading: true,
+  }),
   computed: {
     altFromImage() {
       return this.image.alt
@@ -76,6 +79,11 @@ export default {
         .bg(this.bg)
         .fit(this.fit)
     },
+  },
+  mounted() {
+    document.addEventListener("lazyloaded", (e) => {
+      this.lazyloading = false
+    })
   },
   methods: {
     getSrcSet(w, dpr = 1) {
