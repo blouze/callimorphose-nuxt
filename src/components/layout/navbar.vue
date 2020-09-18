@@ -54,7 +54,7 @@ export default {
   computed: {
     links() {
       return this.pages
-        .filter(({ slug }) => slug !== "index")
+        .filter(({ slug }) => slug !== "index" && slug !== "contact")
         .concat([{ name: "contact", slug: "contact" }])
     },
     siteName() {

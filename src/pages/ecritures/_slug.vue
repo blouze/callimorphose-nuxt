@@ -115,6 +115,14 @@ export default {
   head() {
     return {
       title: this.ecriture && `écritures - ${this.ecriture.name}`,
+      meta: this.ecriture &&
+        this.ecriture.description && [
+          {
+            hid: `description-${this.$route.params.slug}`,
+            name: "description",
+            content: this.ecriture.description,
+          },
+        ],
     }
   },
 }

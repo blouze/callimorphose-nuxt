@@ -32,13 +32,24 @@ export default {
   name: "IndexPage",
   components: { Animation, Separator },
   async fetch() {
-    const { pageBuilder: ecritures } = await this.$sanity.fetch(query, {
-      slug: "ecritures",
+    const { pageBuilder, slug, meta } = await this.$sanity.fetch(query, {
+      slug: "index",
     })
-    this.ecritures = ecritures
+    this.ecritures = pageBuilder
+    this.meta = meta.map(({ name, content }) => ({
+      hid: `${name}-${slug}`,
+      name: name,
+      content,
+    }))
   },
   data: () => ({
     ecritures: [],
+    meta: [],
   }),
+  head() {
+    return {
+      meta: this.meta,
+    }
+  },
 }
 </script>

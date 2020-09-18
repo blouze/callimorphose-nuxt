@@ -58,14 +58,24 @@
 
 <script>
 import query from "~/groq/queries/realisations"
+import pageQuery from "~/groq/queries/page"
 
 export default {
   name: "RealisationsPage",
   async fetch() {
     this.realisations = await this.$sanity.fetch(query)
+    const { slug, meta } = await this.$sanity.fetch(pageQuery, {
+      slug: "realisations",
+    })
+    this.meta = meta.map(({ name, content }) => ({
+      hid: `${name}-${slug}`,
+      name: name,
+      content,
+    }))
   },
   data: () => ({
     realisations: [],
+    meta: [],
     galleryId: null,
     imageIndex: null,
   }),
@@ -92,6 +102,7 @@ export default {
   head() {
     return {
       title: "réalisations",
+      meta: this.meta,
     }
   },
 }
