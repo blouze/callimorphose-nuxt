@@ -67,9 +67,20 @@
 </template>
 
 <script>
+import query from "~/groq/queries/page"
+
 export default {
   name: "ContactPage",
+  async fetch() {
+    const { slug, meta } = await this.$sanity.fetch(query, { slug: "contact" })
+    this.meta = meta.map(({ name, content }) => ({
+      hid: `${name}-${slug}`,
+      name: name,
+      content,
+    }))
+  },
   data: () => ({
+    meta: [],
     videoURL: process.env.videoURL,
     videoPosterURL: process.env.videoPosterURL,
     mdlcURL: "https://www.lamaisondelacalligraphie.com",
@@ -114,17 +125,7 @@ export default {
   head() {
     return {
       title: "contact",
-      meta: [
-        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-        {
-          hid: "description-contact",
-          name: "description",
-          content: `
-            Contact - parlez-nous de vos envies, de votre projet ou posez simplement vos questions. 
-            À propos - Céline Renaudie crée en 2017 l'atelier Callimorphose.
-          `,
-        },
-      ],
+      meta: this.meta,
     }
   },
 }

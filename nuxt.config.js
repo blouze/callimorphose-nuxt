@@ -102,6 +102,6 @@ export default {
     routes: async () => {
       const ecritures = await sanity.fetch(ecrituresQuery)
       return ecritures.map(({ slug }) => `/ecritures/${slug}`)
-    }
+    },
   },
 }

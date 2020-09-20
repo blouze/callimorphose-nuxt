@@ -20,17 +20,27 @@ import query from "~/groq/queries/page"
 export default {
   name: "EcrituresPage",
   async fetch() {
-    const { pageBuilder: ecritures } = await this.$sanity.fetch(query, {
-      slug: "ecritures",
-    })
+    const { pageBuilder: ecritures, slug, meta } = await this.$sanity.fetch(
+      query,
+      {
+        slug: "ecritures",
+      }
+    )
     this.ecritures = ecritures
+    this.meta = meta.map(({ name, content }) => ({
+      hid: `${name}-${slug}`,
+      name: name,
+      content,
+    }))
   },
   data: () => ({
     ecritures: [],
+    meta: [],
   }),
   head() {
     return {
       title: "écritures",
+      meta: this.meta,
     }
   },
 }
