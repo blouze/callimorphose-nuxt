@@ -12,5 +12,9 @@
       "required": "Champ obligatoire",
       "isEmail": "Email invalide"
     }
+  },
+  "analytics": {
+    "message": "Pour nous aider à améliorer votre expérience, ce site utilise des cookies.",
+    "actionText": "J'ai compris"
   }
 }
