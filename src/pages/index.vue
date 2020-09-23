@@ -5,6 +5,7 @@
         <div class="container">
           <div class="columns is-centered">
             <div class="column is-half">
+              <h1 class="title is-hidden">{{ siteName }}</h1>
               <Animation style="width: 100%; height: auto;" />
             </div>
           </div>
@@ -32,12 +33,12 @@ export default {
   name: "IndexPage",
   components: { Animation, Separator },
   async fetch() {
-    const { pageBuilder, slug, meta } = await this.$sanity.fetch(query, {
+    const { pageBuilder, meta } = await this.$sanity.fetch(query, {
       slug: "index",
     })
     this.ecritures = pageBuilder
     this.meta = meta.map(({ name, content }) => ({
-      hid: `${name}-${slug}`,
+      hid: name,
       name: name,
       content,
     }))
@@ -46,6 +47,11 @@ export default {
     ecritures: [],
     meta: [],
   }),
+  computed: {
+    siteName() {
+      return process.env.siteName
+    },
+  },
   head() {
     return {
       meta: this.meta,

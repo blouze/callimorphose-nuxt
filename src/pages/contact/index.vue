@@ -1,8 +1,8 @@
 <template>
   <section class="section">
-    <h2 class="title is-2">
+    <h1 class="title is-2">
       contact
-    </h2>
+    </h1>
     <h5 class="subtitle is-5">
       Parlez-nous de votre projet...
     </h5>
@@ -72,9 +72,9 @@ import query from "~/groq/queries/page"
 export default {
   name: "ContactPage",
   async fetch() {
-    const { slug, meta } = await this.$sanity.fetch(query, { slug: "contact" })
+    const { meta } = await this.$sanity.fetch(query, { slug: "contact" })
     this.meta = meta.map(({ name, content }) => ({
-      hid: `${name}-${slug}`,
+      hid: name,
       name: name,
       content,
     }))

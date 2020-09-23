@@ -1,11 +1,11 @@
 <template>
   <div>
     <section class="section">
-      <h2 class="title is-2">
+      <h1 class="title is-2">
         <DotLeader>
           <template v-slot:end>réalisations</template>
         </DotLeader>
-      </h2>
+      </h1>
     </section>
 
     <section
@@ -64,11 +64,11 @@ export default {
   name: "RealisationsPage",
   async fetch() {
     this.realisations = await this.$sanity.fetch(query)
-    const { slug, meta } = await this.$sanity.fetch(pageQuery, {
+    const { meta } = await this.$sanity.fetch(pageQuery, {
       slug: "realisations",
     })
     this.meta = meta.map(({ name, content }) => ({
-      hid: `${name}-${slug}`,
+      hid: name,
       name: name,
       content,
     }))
