@@ -72,9 +72,9 @@ import query from "~/groq/queries/page"
 export default {
   name: "ContactPage",
   async fetch() {
-    const { slug, meta } = await this.$sanity.fetch(query, { slug: "contact" })
+    const { meta } = await this.$sanity.fetch(query, { slug: "contact" })
     this.meta = meta.map(({ name, content }) => ({
-      hid: `${name}-${slug}`,
+      hid: name,
       name: name,
       content,
     }))

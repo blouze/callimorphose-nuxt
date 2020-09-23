@@ -118,7 +118,7 @@ export default {
       meta: this.ecriture &&
         this.ecriture.description && [
           {
-            hid: `description-${this.$route.params.slug}`,
+            hid: `description`,
             name: "description",
             content: this.ecriture.description,
           },
