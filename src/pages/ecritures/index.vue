@@ -1,11 +1,11 @@
 <template>
   <div>
     <section class="section">
-      <h2 class="title is-2">
+      <h1 class="title is-2">
         <DotLeader>
           <template v-slot:end>écritures</template>
         </DotLeader>
-      </h2>
+      </h1>
     </section>
 
     <section class="section">

@@ -7,7 +7,7 @@
         </nuxt-link>
 
         <template v-slot:end>
-          <h2 class="title is-3 is-hidden-touch">{{ ecriture.name }}</h2>
+          <h1 class="title is-3 is-hidden-touch">{{ ecriture.name }}</h1>
         </template>
       </DotLeader>
 
