@@ -56,13 +56,16 @@
 </template>
 
 <script>
+import { page } from "~/mixins"
 import query from "~/groq/queries/ecriture"
 
 export default {
   name: "EcriturePage",
+  mixins: [page],
   async fetch() {
     const { slug } = this.$route.params
     this.ecriture = await this.$sanity.fetch(query, { slug })
+    this.title = `Écriture ${this.capitalizeFirstLetter(this.ecriture.name)}`
   },
   data: () => ({
     ecriture: null,
@@ -111,21 +114,6 @@ export default {
         (currentIndex + 1 + nbEcritures) % nbEcritures
       ]
     },
-  },
-  head() {
-    return {
-      title:
-        this.ecriture &&
-        `Écriture ${this.capitalizeFirstLetter(this.ecriture.name)}`,
-      meta: this.ecriture &&
-        this.ecriture.description && [
-          {
-            hid: `description`,
-            name: "description",
-            content: this.ecriture.description,
-          },
-        ],
-    }
   },
 }
 </script>
