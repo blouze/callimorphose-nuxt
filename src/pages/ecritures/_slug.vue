@@ -7,7 +7,7 @@
         </nuxt-link>
 
         <template v-slot:end>
-          <h2 class="title is-3 is-hidden-touch">{{ ecriture.name }}</h2>
+          <h1 class="title is-3 is-hidden-touch">{{ ecriture.name }}</h1>
         </template>
       </DotLeader>
 
@@ -114,11 +114,13 @@ export default {
   },
   head() {
     return {
-      title: this.ecriture && `écritures - ${this.ecriture.name}`,
+      title:
+        this.ecriture &&
+        `Écriture ${this.capitalizeFirstLetter(this.ecriture.name)}`,
       meta: this.ecriture &&
         this.ecriture.description && [
           {
-            hid: `description-${this.$route.params.slug}`,
+            hid: `description`,
             name: "description",
             content: this.ecriture.description,
           },

@@ -8,6 +8,10 @@ Vue.mixin({
       window.open(url)
     },
 
+    capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1)
+    },
+
     getImageUrl(img, size) {
       const { url } = img.formats[size]
       return `${

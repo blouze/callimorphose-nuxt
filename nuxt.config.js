@@ -95,13 +95,17 @@ export default {
   },
   sitemap: {
     hostname: 'https://callimorphose.com',
-    exclude: ['/contact/merci'],
+    trailingSlash: true,
+    exclude: ['/contact/merci/'],
     defaults: {
       lastmod: new Date()
     },
     routes: async () => {
       const ecritures = await sanity.fetch(ecrituresQuery)
-      return ecritures.map(({ slug }) => `/ecritures/${slug}`)
+      return ecritures.map(({ slug }) => `/ecritures/${slug}/`)
     },
   },
+  router: {
+    trailingSlash: true
+  }
 }

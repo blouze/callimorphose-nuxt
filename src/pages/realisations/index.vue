@@ -1,11 +1,11 @@
 <template>
   <div>
     <section class="section">
-      <h2 class="title is-2">
+      <h1 class="title is-2">
         <DotLeader>
           <template v-slot:end>réalisations</template>
         </DotLeader>
-      </h2>
+      </h1>
     </section>
 
     <section
@@ -57,25 +57,19 @@
 </template>
 
 <script>
-import query from "~/groq/queries/realisations"
-import pageQuery from "~/groq/queries/page"
+import { page } from "~/mixins"
+import realisationsquery from "~/groq/queries/realisations"
 
 export default {
   name: "RealisationsPage",
+  mixins: [page],
   async fetch() {
-    this.realisations = await this.$sanity.fetch(query)
-    const { slug, meta } = await this.$sanity.fetch(pageQuery, {
-      slug: "realisations",
-    })
-    this.meta = meta.map(({ name, content }) => ({
-      hid: `${name}-${slug}`,
-      name: name,
-      content,
-    }))
+    this.realisations = await this.$sanity.fetch(realisationsquery)
+    return this.fetchPage()
   },
   data: () => ({
+    slug: "realisations",
     realisations: [],
-    meta: [],
     galleryId: null,
     imageIndex: null,
   }),
@@ -98,12 +92,6 @@ export default {
       this.galleryId = id
       this.imageIndex = index
     },
-  },
-  head() {
-    return {
-      title: "réalisations",
-      meta: this.meta,
-    }
   },
 }
 </script>

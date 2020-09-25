@@ -5,6 +5,7 @@
         <div class="container">
           <div class="columns is-centered">
             <div class="column is-half">
+              <h1 class="title is-hidden">{{ siteName }}</h1>
               <Animation style="width: 100%; height: auto;" />
             </div>
           </div>
@@ -24,32 +25,22 @@
 </template>
 
 <script>
+import { page } from "~/mixins"
 import Animation from "~/assets/CALLIMORPHOSE_draw.svg"
 import Separator from "~/assets/separator.svg"
-import query from "~/groq/queries/page"
 
 export default {
   name: "IndexPage",
   components: { Animation, Separator },
-  async fetch() {
-    const { pageBuilder, slug, meta } = await this.$sanity.fetch(query, {
-      slug: "index",
-    })
-    this.ecritures = pageBuilder
-    this.meta = meta.map(({ name, content }) => ({
-      hid: `${name}-${slug}`,
-      name: name,
-      content,
-    }))
-  },
-  data: () => ({
-    ecritures: [],
-    meta: [],
-  }),
-  head() {
-    return {
-      meta: this.meta,
-    }
+  mixins: [page],
+  data: () => ({ slug: "index" }),
+  computed: {
+    ecritures() {
+      return this.pageBuilder
+    },
+    siteName() {
+      return process.env.siteName
+    },
   },
 }
 </script>
