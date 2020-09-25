@@ -15,30 +15,16 @@
 </template>
 
 <script>
-import query from "~/groq/queries/page"
+import { page } from "~/mixins"
 
 export default {
   name: "EcrituresPage",
-  async fetch() {
-    const { pageBuilder: ecritures, meta } = await this.$sanity.fetch(query, {
-      slug: "ecritures",
-    })
-    this.ecritures = ecritures
-    this.meta = meta.map(({ name, content }) => ({
-      hid: name,
-      name: name,
-      content,
-    }))
-  },
-  data: () => ({
-    ecritures: [],
-    meta: [],
-  }),
-  head() {
-    return {
-      title: "écritures",
-      meta: this.meta,
-    }
+  mixins: [page],
+  data: () => ({ slug: "ecritures" }),
+  computed: {
+    ecritures() {
+      return this.pageBuilder
+    },
   },
 }
 </script>

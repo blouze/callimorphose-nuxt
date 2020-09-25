@@ -67,20 +67,13 @@
 </template>
 
 <script>
-import query from "~/groq/queries/page"
+import { page } from "~/mixins"
 
 export default {
   name: "ContactPage",
-  async fetch() {
-    const { meta } = await this.$sanity.fetch(query, { slug: "contact" })
-    this.meta = meta.map(({ name, content }) => ({
-      hid: name,
-      name: name,
-      content,
-    }))
-  },
+  mixins: [page],
   data: () => ({
-    meta: [],
+    slug: "contact",
     videoURL: process.env.videoURL,
     videoPosterURL: process.env.videoPosterURL,
     mdlcURL: "https://www.lamaisondelacalligraphie.com",
@@ -121,12 +114,6 @@ export default {
           this.formSubmitted = false
         })
     },
-  },
-  head() {
-    return {
-      title: "contact",
-      meta: this.meta,
-    }
   },
 }
 </script>

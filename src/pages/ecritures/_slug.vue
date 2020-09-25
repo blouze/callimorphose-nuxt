@@ -114,7 +114,9 @@ export default {
   },
   head() {
     return {
-      title: this.ecriture && `écritures - ${this.ecriture.name}`,
+      title:
+        this.ecriture &&
+        `Écriture ${this.capitalizeFirstLetter(this.ecriture.name)}`,
       meta: this.ecriture &&
         this.ecriture.description && [
           {
