@@ -107,5 +107,8 @@ export default {
   },
   router: {
     trailingSlash: true
+  },
+  generate: {
+    fallback: true
   }
 }
