@@ -115,6 +115,25 @@ export default {
         })
     },
   },
+  jsonld() {
+    return {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "À propos de l'atelier Callimorphose",
+      "url": "https://callimorphose.com/contact/",
+      "description":
+        "Contactez l'atelier Callimorphose, parlez-nous de de votre projet et de vos envies, ou posez directement vos questions.",
+      "thumbnailUrl": [
+        "https://storage.cloud.google.com/callimorphose.appspot.com/video-poster.jpg",
+      ],
+      "uploadDate": "2020-09-27T16:41:38+02:00",
+      "duration": "T00H00M59S",
+      "contentUrl":
+        "https://storage.googleapis.com/callimorphose.appspot.com/FREAKSHOW.mp4",
+      "embedUrl": "https://www.youtube.com/embed/tJ2jlqPiEqQ",
+      "interactionStatistic": {},
+    }
+  },
 }
 </script>
 <style lang="scss" scoped>

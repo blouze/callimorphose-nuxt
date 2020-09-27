@@ -42,6 +42,7 @@ export default {
     "plugins/helpers",
     "plugins/sanity.js",
     "plugins/analytics.js",
+    "plugins/jsonld.js",
     { src:"plugins/vue-gallery.js", mode: "client" },
     "plugins/vuelidate.js"
   ],
