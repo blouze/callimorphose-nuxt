@@ -37,21 +37,43 @@ export default {
   }),
 
   head() {
-    return this.$route.name !== this.localeRoute("index").name
-      ? {
-          title: this.title,
-          titleTemplate: `%s — ${process.env.siteName}`,
-          meta:
-            this.meta &&
-            this.meta.concat({
+    if (this.$route.name === this.localeRoute("index").name) {
+      return {
+        title: process.env.siteName,
+        meta:
+          this.meta &&
+          this.meta.concat([
+            {
+              hid: "og:image",
+              name: "og:image",
+              content: process.env.siteLogo,
+            },
+            {
+              hid: "og:image:width",
+              name: "og:image:width",
+              content: 1201,
+            },
+            {
+              hid: "og:image:height",
+              name: "og:image:height",
+              content: 612,
+            },
+          ]),
+      }
+    } else {
+      return {
+        title: this.title,
+        titleTemplate: `%s — ${process.env.siteName}`,
+        meta:
+          this.meta &&
+          this.meta.concat([
+            {
               hid: "og:title",
               name: "og:title",
               content: `${this.title} — ${process.env.siteName}`,
-            }),
-        }
-      : {
-          title: process.env.siteName,
-          meta: this.meta,
-        }
+            },
+          ]),
+      }
+    }
   },
 }

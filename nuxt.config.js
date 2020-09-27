@@ -29,6 +29,7 @@ export default {
   env: {
     siteName: 'Callimorphose, atelier de calligraphie',
     siteAuthor: 'DISPLAY JERKY',
+    siteLogo: 'https://storage.cloud.google.com/callimorphose.appspot.com/CALLIMORPHOSE-logo-serp.png',
     emailAdress: process.env.EMAIL_ADRESS || 'bonjour@callimorphose.com',
     instagramURL: process.env.INSTAGRAM_URL || 'https://www.instagram.com/callimorphose',
     videoURL: process.env.VIDEO_URL || 'https://storage.googleapis.com/callimorphose.appspot.com/FREAKSHOW.mp4',

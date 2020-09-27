@@ -66,6 +66,33 @@ export default {
     const { slug } = this.$route.params
     this.ecriture = await this.$sanity.fetch(query, { slug })
     this.title = `Écriture ${this.capitalizeFirstLetter(this.ecriture.name)}`
+    this.meta = [
+      {
+        hid: "description",
+        name: "description",
+        content: this.ecriture.description,
+      },
+      {
+        hid: "og:description",
+        name: "og:description",
+        content: this.ecriture.description,
+      },
+      {
+        hid: "og:image",
+        name: "og:image",
+        content: this.$imgBuilder.image(this.ecriture.image).url(),
+      },
+      {
+        hid: "og:image:width",
+        name: "og:image:width",
+        content: this.ecriture.image.dimensions.width,
+      },
+      {
+        hid: "og:image:height",
+        name: "og:image:height",
+        content: this.ecriture.image.dimensions.height,
+      },
+    ]
   },
   data: () => ({
     ecriture: null,
