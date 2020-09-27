@@ -9355,6 +9355,14 @@ nuxt-i18n@6.15.1:
     js-cookie "^2.2.1"
     vue-i18n "^8.18.1"
 
+nuxt-jsonld@1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/nuxt-jsonld/-/nuxt-jsonld-1.5.0.tgz#7337e7b211165663d1d0eea7c47ca3dc9b9e05c6"
+  integrity sha512-75MOInAmm9NwJG1hS331S5Yt5Eeopte9xgqBFeQS/yahP00QJHAPUNQAQf3nWyvNbRVW7YwN2ipropEi/MM22Q==
+  dependencies:
+    schema-dts "^0.7.1"
+    xxhashjs "^0.2.2"
+
 nuxt-stack-cli@0.8.1:
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/nuxt-stack-cli/-/nuxt-stack-cli-0.8.1.tgz#2b420982bd8550021dab6fc9cf4aa3280a504265"
@@ -11712,6 +11720,11 @@ saxes@^5.0.0:
   dependencies:
     xmlchars "^2.2.0"
 
+schema-dts@^0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/schema-dts/-/schema-dts-0.7.1.tgz#9c7e978e958ce331e927b63030575c47b6a7d795"
+  integrity sha512-BCbdw1DtSJErERmKrTyu8K+nyuEwfKgRwSTctlklBqnAAkt9+w//Xg8vgRSzknGNBne+DUGLtL372KlLuI002w==
+
 schema-utils@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-1.0.0.tgz#0b79a93204d7b600d4b2850d1f66c2a34951c770"
@@ -13921,7 +13934,7 @@ xtend@^4.0.0, xtend@~4.0.1:
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.2.tgz#bb72779f5fa465186b1f438f674fa347fdb5db54"
   integrity sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==
 
-xxhashjs@^0.2.1:
+xxhashjs@^0.2.1, xxhashjs@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/xxhashjs/-/xxhashjs-0.2.2.tgz#8a6251567621a1c46a5ae204da0249c7f8caa9d8"
   integrity sha512-AkTuIuVTET12tpsVIQo+ZU6f/qDmKuRUcjaqR+OIvm+aCBsZ95i7UVY5WJ9TMsSaZ0DA2WxoZ4acu0sPH+OKAw==
