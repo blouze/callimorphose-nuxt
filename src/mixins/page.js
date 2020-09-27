@@ -11,11 +11,19 @@ export default {
         slug: this.slug,
       })
       this.title = this.capitalizeFirstLetter(name)
-      this.meta = meta.map(({ name, content }) => ({
-        hid: name,
-        name: name,
-        content,
-      }))
+      this.meta = meta
+        .map(({ name, content }) => ({
+          hid: name,
+          name: name,
+          content,
+        }))
+        .concat(
+          meta.map(({ name, content }) => ({
+            hid: `og:${name}`,
+            name: `og:${name}`,
+            content,
+          }))
+        )
       this.pageBuilder = pageBuilder
     },
   },
@@ -33,7 +41,11 @@ export default {
       ? {
           title: this.title,
           titleTemplate: `%s — ${process.env.siteName}`,
-          meta: this.meta,
+          meta: this.meta.concat({
+            hid: "og:title",
+            name: "og:title",
+            content: `${this.title} — ${process.env.siteName}`,
+          }),
         }
       : {
           title: process.env.siteName,

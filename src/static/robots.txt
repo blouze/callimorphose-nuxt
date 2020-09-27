@@ -1,3 +1,0 @@
-User-agent: *
-Disallow:
-Sitemap: https://callimorphose.com/sitemap.xml

@@ -9,7 +9,7 @@ const sanity = sanityClient({
 
 export default {
   srcDir: "src",
-  modules: ["nuxt-stack", "nuxt-buefy", "nuxt-fontawesome", "nuxt-i18n"],
+  modules: ["nuxt-stack", "nuxt-buefy", "nuxt-fontawesome", "nuxt-i18n", "@nuxtjs/robots"],
   buildModules: ["@nuxtjs/svg"],
   styles: ["styles/index.scss"],
   styleResources: {
@@ -110,5 +110,8 @@ export default {
   },
   generate: {
     fallback: true
+  },
+  robots: {
+    Sitemap: 'https://callimorphose.com/sitemap.xml'
   }
 }
