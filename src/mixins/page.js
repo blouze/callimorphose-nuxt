@@ -41,11 +41,13 @@ export default {
       ? {
           title: this.title,
           titleTemplate: `%s — ${process.env.siteName}`,
-          meta: this.meta.concat({
-            hid: "og:title",
-            name: "og:title",
-            content: `${this.title} — ${process.env.siteName}`,
-          }),
+          meta:
+            this.meta &&
+            this.meta.concat({
+              hid: "og:title",
+              name: "og:title",
+              content: `${this.title} — ${process.env.siteName}`,
+            }),
         }
       : {
           title: process.env.siteName,
