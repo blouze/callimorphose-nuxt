@@ -11,7 +11,7 @@
         </template>
       </DotLeader>
 
-      <div class="columns">
+      <div class="columns is-multiline">
         <div class="column is-full is-three-fifths-desktop">
           <div class="card has-background-white-ter">
             <div class="card-image">
@@ -21,7 +21,7 @@
               >
                 <sanity-image
                   :image="ecriture.image.asset"
-                  :alt="ecriture.name"
+                  :title="`écriture ${ecriture.name}`"
                   :width="ecriture.image.dimensions.width"
                   :height="(ecriture.image.dimensions.width * 3) / 4"
                   fit="crop"
@@ -56,13 +56,43 @@
 </template>
 
 <script>
+import { page } from "~/mixins"
 import query from "~/groq/queries/ecriture"
 
 export default {
   name: "EcriturePage",
+  mixins: [page],
   async fetch() {
     const { slug } = this.$route.params
     this.ecriture = await this.$sanity.fetch(query, { slug })
+    this.title = `Écriture ${this.capitalizeFirstLetter(this.ecriture.name)}`
+    this.meta = [
+      {
+        hid: "description",
+        name: "description",
+        content: this.ecriture.description,
+      },
+      {
+        hid: "og:description",
+        name: "og:description",
+        content: this.ecriture.description,
+      },
+      {
+        hid: "og:image",
+        name: "og:image",
+        content: this.$imgBuilder.image(this.ecriture.image).url(),
+      },
+      {
+        hid: "og:image:width",
+        name: "og:image:width",
+        content: this.ecriture.image.dimensions.width,
+      },
+      {
+        hid: "og:image:height",
+        name: "og:image:height",
+        content: this.ecriture.image.dimensions.height,
+      },
+    ]
   },
   data: () => ({
     ecriture: null,
@@ -85,6 +115,7 @@ export default {
                 return {
                   ...image,
                   name: cur.title,
+                  title: `${cur.title} - écriture ${this.ecriture.name}`,
                 }
               })
             )
@@ -111,21 +142,6 @@ export default {
         (currentIndex + 1 + nbEcritures) % nbEcritures
       ]
     },
-  },
-  head() {
-    return {
-      title:
-        this.ecriture &&
-        `Écriture ${this.capitalizeFirstLetter(this.ecriture.name)}`,
-      meta: this.ecriture &&
-        this.ecriture.description && [
-          {
-            hid: `description`,
-            name: "description",
-            content: this.ecriture.description,
-          },
-        ],
-    }
   },
 }
 </script>

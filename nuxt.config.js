@@ -9,7 +9,7 @@ const sanity = sanityClient({
 
 export default {
   srcDir: "src",
-  modules: ["nuxt-stack", "nuxt-buefy", "nuxt-fontawesome", "nuxt-i18n"],
+  modules: ["nuxt-stack", "nuxt-buefy", "nuxt-fontawesome", "nuxt-i18n", "@nuxtjs/robots"],
   buildModules: ["@nuxtjs/svg"],
   styles: ["styles/index.scss"],
   styleResources: {
@@ -29,6 +29,7 @@ export default {
   env: {
     siteName: 'Callimorphose, atelier de calligraphie',
     siteAuthor: 'DISPLAY JERKY',
+    siteLogo: 'https://storage.cloud.google.com/callimorphose.appspot.com/CALLIMORPHOSE-logo-serp.png',
     emailAdress: process.env.EMAIL_ADRESS || 'bonjour@callimorphose.com',
     instagramURL: process.env.INSTAGRAM_URL || 'https://www.instagram.com/callimorphose',
     videoURL: process.env.VIDEO_URL || 'https://storage.googleapis.com/callimorphose.appspot.com/FREAKSHOW.mp4',
@@ -107,5 +108,11 @@ export default {
   },
   router: {
     trailingSlash: true
+  },
+  generate: {
+    fallback: true
+  },
+  robots: {
+    Sitemap: 'https://callimorphose.com/sitemap.xml'
   }
 }

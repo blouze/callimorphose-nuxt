@@ -28,7 +28,6 @@ export default {
   },
   head() {
     return {
-      titleTemplate: `%s | ${process.env.siteName}`,
       link: [
         {
           rel: "canonical",

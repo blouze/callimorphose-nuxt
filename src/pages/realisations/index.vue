@@ -36,7 +36,7 @@
             >
               <sanity-image
                 :image="image.asset"
-                :alt="title"
+                :title="title"
                 :width="image.dimensions.width"
                 :height="image.dimensions.height"
               />

@@ -14,7 +14,7 @@
           <figure v-if="image" class="image is-4by3">
             <sanity-image
               :image="image.asset"
-              :alt="name"
+              :title="`écriture ${name}`"
               :width="image.dimensions.width"
               :height="(image.dimensions.width * 3) / 4"
               fit="crop"
