@@ -9,7 +9,8 @@
     <b-loading v-model="lazyloading" :is-full-page="false" />
     <img
       class="lazyload"
-      :alt="alt"
+      :title="title"
+      :alt="`${title} — Callimorphose`"
       :data-src="src"
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2P49evXfwAJzgPuMtDh2wAAAABJRU5ErkJggg=="
     />
@@ -38,9 +39,9 @@ export default {
       type: Object,
       required: true,
     },
-    alt: {
+    title: {
       type: String,
-      default: "Missing alternative text",
+      default: "",
     },
     width: {
       type: Number,
@@ -67,9 +68,6 @@ export default {
     lazyloading: true,
   }),
   computed: {
-    altFromImage() {
-      return this.image.alt
-    },
     src() {
       return this.$imgBuilder
         .image(this.image)

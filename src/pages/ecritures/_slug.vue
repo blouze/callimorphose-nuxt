@@ -11,7 +11,7 @@
         </template>
       </DotLeader>
 
-      <div class="columns">
+      <div class="columns is-multiline">
         <div class="column is-full is-three-fifths-desktop">
           <div class="card has-background-white-ter">
             <div class="card-image">
@@ -21,7 +21,7 @@
               >
                 <sanity-image
                   :image="ecriture.image.asset"
-                  :alt="ecriture.name"
+                  :title="`écriture ${ecriture.name}`"
                   :width="ecriture.image.dimensions.width"
                   :height="(ecriture.image.dimensions.width * 3) / 4"
                   fit="crop"
@@ -88,6 +88,7 @@ export default {
                 return {
                   ...image,
                   name: cur.title,
+                  title: `${cur.title} - écriture ${this.ecriture.name}`,
                 }
               })
             )

@@ -4,7 +4,7 @@
       <figure class="clickable image" @click="$emit('click', index)">
         <sanity-image
           :image="image.asset"
-          :alt="image.name"
+          :title="image.title"
           :width="image.dimensions.width"
           :height="image.dimensions.height"
           :size-factor="0.5"
