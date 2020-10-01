@@ -108,19 +108,20 @@ export default {
       )
     },
     realisationsImages() {
-      return this.ecriture && this.ecriture.realisations
-        ? this.ecriture.realisations.reduce((acc, cur) => {
-            return acc.concat(
-              cur.images.map((image) => {
-                return {
-                  ...image,
-                  name: cur.title,
-                  title: `${cur.title} - écriture ${this.ecriture.name}`,
-                }
-              })
-            )
-          }, [])
-        : []
+      return []
+      // return this.ecriture && this.ecriture.realisations
+      //   ? this.ecriture.realisations.reduce((acc, cur) => {
+      //       return acc.concat(
+      //         cur.images.map((image) => {
+      //           return {
+      //             ...image,
+      //             name: cur.title,
+      //             title: `${cur.title} - écriture ${this.ecriture.name}`,
+      //           }
+      //         })
+      //       )
+      //     }, [])
+      //   : []
     },
     prev() {
       if (!this.ecriture) return null
