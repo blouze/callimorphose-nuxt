@@ -60,6 +60,18 @@
             événementielles, travaux sur documents anciens, formation et cours
             particuliers...
           </p>
+
+          <span class="subtitle is-7">
+            Crédits vidéo:&nbsp;
+            <b-button
+              type="is-text"
+              size="is-small"
+              label="7F"
+              icon-left="instagram"
+              icon-pack="fab"
+              @click="openLink(`https://www.instagram.com/7f_7f_7f/`)"
+            />
+          </span>
         </div>
       </div>
     </div>
