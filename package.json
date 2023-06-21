@@ -8,7 +8,7 @@
     "@sanity/image-url": "0.140.19",
     "date-fns": "2.16.1",
     "groq": "1.150.1",
-    "nuxt": "2.14.5",
+    "nuxt": "3.4.3",
     "nuxt-buefy": "0.4.3",
     "nuxt-fontawesome": "0.4.0",
     "nuxt-i18n": "6.15.1",
